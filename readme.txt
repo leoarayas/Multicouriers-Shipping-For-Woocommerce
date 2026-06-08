@@ -1,4 +1,4 @@
-=== Multicouriers Envio para Tiendas ===
+=== Multicouriers Shipping for WooCommerce ===
 Contributors: multicouriers
 Tags: shipping, chile, woocommerce, checkout blocks
 Requires at least: 6.0
@@ -86,16 +86,32 @@ For the Chile cities dataset endpoint, the plugin performs a read-only request a
 
 == Screenshots ==
 
-1. Fixed-rate rules table (`WooCommerce > Multicouriers Tarifas`)
-2. Premium configuration and diagnostics (`WooCommerce > Multicouriers Premium`)
+1. Fixed-rate rules table (WooCommerce > Multicouriers Tarifas)
+2. Premium configuration and diagnostics (WooCommerce > Multicouriers Premium)
 3. Shipping method configuration inside WooCommerce shipping zones
 
 == Changelog ==
 
+= 1.0.5 =
+* Fix: Handle API empty response gracefully
+* Fix: City dropdown format compatibility with local fallback data
+* Refactor: Extract correlation_id logic into shared method
+* Refactor: Create MCWS_Utils helper class
+* Refactor: Create abstract base class for WooCommerce Blocks support
+* Remove: Dead code from unused method
+
+= 1.0.4 =
+* Maintenance and stability improvements
+
+= 1.0.3 =
+* Version bump
+* Fix: Domain path and improve uninstall cleanup
+
+= 1.0.2 =
+* Stability improvements
+
+= 1.0.1 =
+* Bug fixes and improvements
+
 = 1.0.0 =
-* Initial public release for WordPress.org
-* Fixed WooCommerce Checkout Blocks loading issues
-* Added commune selector support for Checkout Blocks (dependent on region)
-* Unified fixed-rate behavior to use the global Multicouriers rules table (including exclude rules)
-* Simplified fixed-rate zone modal to avoid duplicate rule configuration
-* Added external services disclosure documentation
+* Initial public release

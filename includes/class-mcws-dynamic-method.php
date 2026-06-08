@@ -131,19 +131,6 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
                 'default' => array(),
                 'description' => __('Si defines clases, fallback solo aplica cuando el carrito contiene al menos una.', 'multicouriers-shipping-for-woocommerce'),
             ),
-            'couriers' => array(
-                'title' => __('Couriers a consultar', 'multicouriers-shipping-for-woocommerce'),
-                'type' => 'multiselect',
-                'class' => 'wc-enhanced-select',
-                'options' => array(
-                    'starken' => __('Starken', 'multicouriers-shipping-for-woocommerce'),
-                    'chilexpress' => __('Chilexpress', 'multicouriers-shipping-for-woocommerce'),
-                    'bluexpress' => __('Bluexpress', 'multicouriers-shipping-for-woocommerce'),
-                    'fedex' => __('FedEx', 'multicouriers-shipping-for-woocommerce'),
-                ),
-                'default' => array('starken'),
-                'description' => __('Si no seleccionas ninguno, el backend usa su configuracion por defecto.', 'multicouriers-shipping-for-woocommerce'),
-            ),
         );
     }
 
@@ -192,7 +179,6 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
             ),
             'package' => $package_data,
             'currency' => get_woocommerce_currency(),
-            'couriers' => $this->get_selected_couriers(),
         );
 
         $client = new MCWS_Api_Client($api_base_url, $api_token);
@@ -459,24 +445,5 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
             'width' => round($max_width, 2),
             'length' => round($max_length, 2),
         );
-    }
-
-    private function get_selected_couriers(): array
-    {
-        $couriers = $this->get_option('couriers', array());
-        if (!is_array($couriers)) {
-            return array();
-        }
-
-        $allowed = array('starken', 'chilexpress', 'bluexpress', 'fedex');
-        $selected = array();
-        foreach ($couriers as $courier) {
-            $courier = strtolower(trim((string) $courier));
-            if (in_array($courier, $allowed, true)) {
-                $selected[] = $courier;
-            }
-        }
-
-        return array_values(array_unique($selected));
     }
 }

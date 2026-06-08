@@ -771,7 +771,6 @@ class MCWS_Admin
                 'length' => 10,
             ),
             'currency' => get_woocommerce_currency(),
-            'couriers' => isset($settings['couriers']) && is_array($settings['couriers']) ? $settings['couriers'] : array('starken'),
         );
 
         $client = new MCWS_Api_Client($api_url, $token);
@@ -1368,7 +1367,6 @@ class MCWS_Admin
                 'configured' => $api_url !== '' && $token !== '',
                 'api_base_url' => $api_url,
                 'token_configured' => $token !== '',
-                'couriers' => isset($settings['couriers']) && is_array($settings['couriers']) ? array_values($settings['couriers']) : array(),
                 'cache_enabled' => isset($settings['enable_cache']) ? (string) $settings['enable_cache'] === 'yes' : false,
                 'fallback_enabled' => isset($settings['enable_fixed_fallback']) ? (string) $settings['enable_fixed_fallback'] === 'yes' : false,
             ),
