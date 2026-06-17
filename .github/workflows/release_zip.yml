@@ -109,6 +109,13 @@ jobs:
           zip -r "dist/${PLUGIN_SLUG}-${{ steps.ver.outputs.version }}.zip" "$PLUGIN_SLUG"
           ls -lh dist
 
+      - name: Generate checksum
+        shell: bash
+        run: |
+          cd "$BUILD_ROOT/dist"
+          sha256sum "${PLUGIN_SLUG}-${{ steps.ver.outputs.version }}.zip" > "${PLUGIN_SLUG}-${{ steps.ver.outputs.version }}.zip.sha256"
+          cat "${PLUGIN_SLUG}-${{ steps.ver.outputs.version }}.zip.sha256"
+
       - name: Attach ZIP to GitHub Release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2

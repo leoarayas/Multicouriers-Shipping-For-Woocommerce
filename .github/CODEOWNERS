@@ -1,0 +1,11 @@
+# Default owners for everything in the repo
+* @agenciaingenium/multicouriers
+
+# CI/CD workflows
+.github/ @agenciaingenium/multicouriers
+
+# Core plugin files
+*.php @agenciaingenium/multicouriers
+
+# Documentation
+*.md @agenciaingenium/multicouriers
