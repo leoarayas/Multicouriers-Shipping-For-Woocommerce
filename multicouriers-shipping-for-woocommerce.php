@@ -3,7 +3,7 @@
  * Plugin Name: Multicouriers Shipping for WooCommerce
  * Plugin URI: https://multicouriers.cl
  * Description: Shipping for Chile with fixed rates by commune/region and premium dynamic quotes via Multicouriers API.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
