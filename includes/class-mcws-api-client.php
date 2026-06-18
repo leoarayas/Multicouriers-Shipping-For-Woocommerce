@@ -108,7 +108,9 @@ class MCWS_Api_Client
             $result = array(
                 'ok' => true,
                 'error' => '',
-                'rates' => isset($data['rates']) && is_array($data['rates']) ? $data['rates'] : array(),
+                'rates' => isset($data['rates']) && is_array($data['rates'])
+                    ? $data['rates']
+                    : (isset($data['data']['rates']) && is_array($data['data']['rates']) ? $data['data']['rates'] : array()),
                 'correlation_id' => $correlation,
             );
 
