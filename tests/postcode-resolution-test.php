@@ -2,33 +2,7 @@
 
 declare(strict_types=1);
 
-if (!defined('ABSPATH')) {
-    define('ABSPATH', __DIR__ . '/');
-}
-
-if (!function_exists('remove_accents')) {
-    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Test bootstrap shim for WordPress core helper.
-    function remove_accents($text)
-    {
-        $map = array(
-            'Á' => 'A', 'É' => 'E', 'Í' => 'I', 'Ó' => 'O', 'Ú' => 'U',
-            'á' => 'a', 'é' => 'e', 'í' => 'i', 'ó' => 'o', 'ú' => 'u',
-            'Ñ' => 'N', 'ñ' => 'n',
-        );
-        return strtr((string) $text, $map);
-    }
-}
-
 require_once dirname(__DIR__) . '/includes/class-mcws-chile-address.php';
-
-function mcws_assert_same($expected, $actual, string $message): void
-{
-    if ($expected !== $actual) {
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- CLI test output.
-        fwrite(STDERR, "FAIL: {$message}. Esperado '{$expected}', obtenido '{$actual}'." . PHP_EOL);
-        exit(1);
-    }
-}
 
 $mcws_reflection = new ReflectionClass('MCWS_Chile_Address');
 $mcws_property = $mcws_reflection->getProperty('postal_codes');

@@ -427,10 +427,15 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
             $quantity = (int) ($cart_item['quantity'] ?? 1);
             $product = $cart_item['data'];
 
-            $weight = (float) wc_get_weight((string) $product->get_weight(), 'kg');
-            $height = (float) wc_get_dimension((string) $product->get_height(), 'cm');
-            $width = (float) wc_get_dimension((string) $product->get_width(), 'cm');
-            $length = (float) wc_get_dimension((string) $product->get_length(), 'cm');
+            $raw_weight = $product->get_weight();
+            $raw_height = $product->get_height();
+            $raw_width = $product->get_width();
+            $raw_length = $product->get_length();
+
+            $weight = $raw_weight !== '' && $raw_weight !== null ? (float) wc_get_weight((string) $raw_weight, 'kg') : 0.0;
+            $height = $raw_height !== '' && $raw_height !== null ? (float) wc_get_dimension((string) $raw_height, 'cm') : 0.0;
+            $width = $raw_width !== '' && $raw_width !== null ? (float) wc_get_dimension((string) $raw_width, 'cm') : 0.0;
+            $length = $raw_length !== '' && $raw_length !== null ? (float) wc_get_dimension((string) $raw_length, 'cm') : 0.0;
 
             $total_weight += max(0.1, $weight) * max(1, $quantity);
             $max_height = max($max_height, max(1, $height));

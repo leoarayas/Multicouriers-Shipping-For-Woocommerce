@@ -24,6 +24,33 @@ class MCWS_Logger
         self::write('error', $message, $context);
     }
 
+    public static function get_health_status(): array
+    {
+        $events = self::get_recent(100);
+        $errors = 0;
+        $warnings = 0;
+
+        foreach ($events as $event) {
+            if (!is_array($event)) {
+                continue;
+            }
+            $level = (string) ($event['level'] ?? '');
+            if ($level === 'error') {
+                $errors++;
+            } elseif ($level === 'warning') {
+                $warnings++;
+            }
+        }
+
+        return array(
+            'total_events' => count($events),
+            'errors' => $errors,
+            'warnings' => $warnings,
+            'last_event_time' => !empty($events) ? (string) ($events[0]['time'] ?? '') : '',
+            'status' => $errors > 10 ? 'critical' : ($warnings > 5 ? 'warning' : 'healthy'),
+        );
+    }
+
     public static function get_recent(int $limit = 50): array
     {
         $events = get_option(self::OPTION_KEY, array());

@@ -46,6 +46,8 @@ if (!defined('MCWS_PLUGIN_URL')) {
 }
 
 if (!defined('MCWS_VERSION')) {
+    // Single source of truth: the version in this constant is bumped by bin/bump-version.php
+    // and must match the plugin header "Version" and readme.txt "Stable tag".
     define('MCWS_VERSION', '1.0.5');
 }
 
