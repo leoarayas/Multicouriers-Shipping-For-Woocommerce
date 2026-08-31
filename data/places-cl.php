@@ -13,6 +13,7 @@ if (!defined('ABSPATH')) {
 global $places;
 
 // Format: region_code => ['city_name' => ['name' => 'City Name', 'postal_code' => 'XXXXXXX']]
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WooCommerce uses this global structure for country places.
 $places['CL'] = array(
     'CL-AP' => array(
         'Arica' => array('name' => 'Arica', 'postal_code' => '1000000'),

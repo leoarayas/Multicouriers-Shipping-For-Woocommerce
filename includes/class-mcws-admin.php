@@ -63,12 +63,24 @@ class MCWS_Admin
 
     public static function enqueue_assets(string $hook): void
     {
-        if ($hook !== 'woocommerce_page_mcws-fixed-rates') {
+        if ($hook !== 'woocommerce_page_mcws-fixed-rates' && $hook !== 'woocommerce_page_mcws-premium-status') {
             return;
         }
 
         $admin_script_path = MCWS_PLUGIN_DIR . 'assets/js/admin-fixed-rates.js';
         $admin_script_version = file_exists($admin_script_path) ? (string) filemtime($admin_script_path) : MCWS_VERSION;
+
+        if ($hook === 'woocommerce_page_mcws-premium-status') {
+            wp_enqueue_script(
+                'mcws-admin-premium',
+                MCWS_PLUGIN_URL . 'assets/js/admin-premium.js',
+                array(),
+                MCWS_VERSION,
+                true
+            );
+
+            return;
+        }
 
         wp_enqueue_script(
             'mcws-admin-rates',
@@ -374,13 +386,12 @@ class MCWS_Admin
             $response_json = isset($quote_test['response']) ? wp_json_encode($quote_test['response'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : '{}';
 
             echo '<h4>' . esc_html__('Payload (copiar)', 'multicouriers-shipping-for-woocommerce') . '</h4>';
-            echo '<textarea id="mcws-payload-json" readonly rows="12" style="width:100%;max-width:1200px;font-family:monospace;" onclick="this.select();">' . esc_textarea((string) $payload_json) . '</textarea>';
-            echo '<p><button type="button" class="button" onclick="mcwsCopyText(\'mcws-payload-json\')">Copiar payload</button></p>';
+            echo '<textarea id="mcws-payload-json" readonly rows="12" style="width:100%;max-width:1200px;font-family:monospace;">' . esc_textarea((string) $payload_json) . '</textarea>';
+            echo '<p><button type="button" class="button mcws-copy-text" data-copy-target="mcws-payload-json">Copiar payload</button></p>';
 
             echo '<h4>' . esc_html__('Response (copiar)', 'multicouriers-shipping-for-woocommerce') . '</h4>';
-            echo '<textarea id="mcws-response-json" readonly rows="16" style="width:100%;max-width:1200px;font-family:monospace;" onclick="this.select();">' . esc_textarea((string) $response_json) . '</textarea>';
-            echo '<p><button type="button" class="button" onclick="mcwsCopyText(\'mcws-response-json\')">Copiar response</button></p>';
-            echo '<script>function mcwsCopyText(id){var el=document.getElementById(id);if(!el){return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value);}else{el.select();document.execCommand(\"copy\");}}</script>';
+            echo '<textarea id="mcws-response-json" readonly rows="16" style="width:100%;max-width:1200px;font-family:monospace;">' . esc_textarea((string) $response_json) . '</textarea>';
+            echo '<p><button type="button" class="button mcws-copy-text" data-copy-target="mcws-response-json">Copiar response</button></p>';
         }
 
             if (is_array($diag)) {

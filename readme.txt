@@ -2,7 +2,7 @@
 Contributors: multicouriers
 Tags: shipping, chile, woocommerce, checkout blocks
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.6
 License: GPLv2 or later
@@ -82,7 +82,8 @@ For the Chile cities dataset endpoint, the plugin performs a read-only request a
 = Service terms and privacy =
 
 * Provider website: `https://multicouriers.cl/`
-* Privacy/terms information is provided by Multicouriers on their service channels and website.
+* Terms and conditions: `https://multicouriers.cl/terminos-y-condiciones`
+* Privacy policy: `https://multicouriers.cl/politica-de-privacidad`
 
 == Screenshots ==
 
@@ -91,6 +92,9 @@ For the Chile cities dataset endpoint, the plugin performs a read-only request a
 3. Shipping method configuration inside WooCommerce shipping zones
 
 == Changelog ==
+
+= 1.0.6 =
+* Maintenance release with stability improvements.
 
 = 1.0.5 =
 * Fix: Handle API empty response gracefully
