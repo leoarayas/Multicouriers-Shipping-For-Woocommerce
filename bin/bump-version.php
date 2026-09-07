@@ -1,7 +1,7 @@
 <?php
 /**
  * Bump version en:
- * - multicouriers-shipping-for-woocommerce.php (header Version)
+ * - clevers-shipping-for-multicouriers.php (header Version)
  * - readme.txt (Stable tag)
  *
  * Uso:
@@ -102,7 +102,7 @@ function multicouriers_shipping_for_woocommerce_bump_readme_stable_tag( string $
 	}
 }
 
-multicouriers_shipping_for_woocommerce_bump_plugin_header_version( $multicouriers_shipping_for_woocommerce_root . '/multicouriers-shipping-for-woocommerce.php', $multicouriers_shipping_for_woocommerce_new_version );
+multicouriers_shipping_for_woocommerce_bump_plugin_header_version( $multicouriers_shipping_for_woocommerce_root . '/clevers-shipping-for-multicouriers.php', $multicouriers_shipping_for_woocommerce_new_version );
 multicouriers_shipping_for_woocommerce_bump_readme_stable_tag( $multicouriers_shipping_for_woocommerce_root . '/readme.txt', $multicouriers_shipping_for_woocommerce_new_version );
 
 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CLI utility output.

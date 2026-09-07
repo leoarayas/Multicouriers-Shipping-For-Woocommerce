@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: Multicouriers Shipping for WooCommerce
+ * Plugin Name: Clevers Shipping for Multicouriers
  * Plugin URI: https://multicouriers.cl
  * Description: Shipping for Chile with fixed rates by commune/region and premium dynamic quotes via Multicouriers API.
- * Version: 1.0.6
+ * Version: 1.0.8
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
  * Author: Multicouriers
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: multicouriers-shipping-for-woocommerce
+ * Text Domain: clevers-shipping-for-multicouriers
  * Domain Path: /languages/
  * WC requires at least: 8.0
  * WC tested up to: 10.0
@@ -27,7 +27,7 @@ if (!function_exists('is_plugin_active')) {
 
 if (!is_plugin_active('woocommerce/woocommerce.php')) {
     add_action('admin_notices', static function (): void {
-        echo '<div class="notice notice-error"><p>' . esc_html__('Multicouriers requiere que WooCommerce este activo.', 'multicouriers-shipping-for-woocommerce') . '</p></div>';
+        echo '<div class="notice notice-error"><p>' . esc_html__('Multicouriers requiere que WooCommerce este activo.', 'clevers-shipping-for-multicouriers') . '</p></div>';
     });
     return;
 }
@@ -45,7 +45,7 @@ if (!defined('MCWS_PLUGIN_URL')) {
 }
 
 if (!defined('MCWS_VERSION')) {
-    define('MCWS_VERSION', '1.0.6');
+    define('MCWS_VERSION', '1.0.8');
 }
 
 if (!defined('MCWS_API_BASE_URL')) {
@@ -170,11 +170,11 @@ add_filter('manage_edit-shop_order_columns', static function ($columns) {
     foreach ($columns as $key => $label) {
         $new[$key] = $label;
         if ($key === 'order_total') {
-            $new['mcws_correlation_id'] = __('MC Correlation', 'multicouriers-shipping-for-woocommerce');
+            $new['mcws_correlation_id'] = __('MC Correlation', 'clevers-shipping-for-multicouriers');
         }
     }
     if (!isset($new['mcws_correlation_id'])) {
-        $new['mcws_correlation_id'] = __('MC Correlation', 'multicouriers-shipping-for-woocommerce');
+        $new['mcws_correlation_id'] = __('MC Correlation', 'clevers-shipping-for-multicouriers');
     }
     return $new;
 }, 20);
@@ -192,11 +192,11 @@ add_filter('woocommerce_shop_order_list_table_columns', static function ($column
     foreach ($columns as $key => $label) {
         $new[$key] = $label;
         if ($key === 'order_total') {
-            $new['mcws_correlation_id'] = __('MC Correlation', 'multicouriers-shipping-for-woocommerce');
+            $new['mcws_correlation_id'] = __('MC Correlation', 'clevers-shipping-for-multicouriers');
         }
     }
     if (!isset($new['mcws_correlation_id'])) {
-        $new['mcws_correlation_id'] = __('MC Correlation', 'multicouriers-shipping-for-woocommerce');
+        $new['mcws_correlation_id'] = __('MC Correlation', 'clevers-shipping-for-multicouriers');
     }
     return $new;
 }, 20);
@@ -216,7 +216,7 @@ add_action('woocommerce_shop_order_list_table_custom_column', static function ($
 add_action('add_meta_boxes', static function () {
     add_meta_box(
         'mcws-order-correlation',
-        __('Multicouriers Correlation', 'multicouriers-shipping-for-woocommerce'),
+        __('Multicouriers Correlation', 'clevers-shipping-for-multicouriers'),
         static function ($post) {
             $order = wc_get_order($post->ID);
             if (!$order) {
@@ -224,7 +224,7 @@ add_action('add_meta_boxes', static function () {
                 return;
             }
             $value = (string) $order->get_meta('_mcws_correlation_id');
-            echo '<p><strong>' . esc_html__('Correlation ID:', 'multicouriers-shipping-for-woocommerce') . '</strong><br>' . wp_kses_post(mcws_render_correlation_value($value)) . '</p>';
+            echo '<p><strong>' . esc_html__('Correlation ID:', 'clevers-shipping-for-multicouriers') . '</strong><br>' . wp_kses_post(mcws_render_correlation_value($value)) . '</p>';
         },
         'shop_order',
         'side',
@@ -235,7 +235,7 @@ add_action('add_meta_boxes', static function () {
 add_action('add_meta_boxes_woocommerce_page_wc-orders', static function () {
     add_meta_box(
         'mcws-order-correlation-hpos',
-        __('Multicouriers Correlation', 'multicouriers-shipping-for-woocommerce'),
+        __('Multicouriers Correlation', 'clevers-shipping-for-multicouriers'),
         static function () {
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only screen context, only fetching current order ID for display.
             $order_id = isset($_GET['id']) ? absint($_GET['id']) : 0;
@@ -245,7 +245,7 @@ add_action('add_meta_boxes_woocommerce_page_wc-orders', static function () {
                 return;
             }
             $value = (string) $order->get_meta('_mcws_correlation_id');
-            echo '<p><strong>' . esc_html__('Correlation ID:', 'multicouriers-shipping-for-woocommerce') . '</strong><br>' . wp_kses_post(mcws_render_correlation_value($value)) . '</p>';
+            echo '<p><strong>' . esc_html__('Correlation ID:', 'clevers-shipping-for-multicouriers') . '</strong><br>' . wp_kses_post(mcws_render_correlation_value($value)) . '</p>';
         },
         'woocommerce_page_wc-orders',
         'side',

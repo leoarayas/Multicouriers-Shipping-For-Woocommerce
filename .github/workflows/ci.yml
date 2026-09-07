@@ -51,7 +51,7 @@ jobs:
         shell: bash
         run: |
           echo "Checking i18n text domain consistency..."
-          DOMAIN="multicouriers-shipping-for-woocommerce"
+          DOMAIN="clevers-shipping-for-multicouriers"
           ERRORS=0
 
           # Check that all translatable strings use the correct text domain
@@ -89,7 +89,7 @@ jobs:
         shell: bash
         run: |
           echo "Checking for common untranslated patterns..."
-          DOMAIN="multicouriers-shipping-for-woocommerce"
+          DOMAIN="clevers-shipping-for-multicouriers"
 
           # Look for hardcoded user-facing strings that should be translated
           # This is a heuristic check - manual review still needed

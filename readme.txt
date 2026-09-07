@@ -1,10 +1,10 @@
-=== Multicouriers Shipping for WooCommerce ===
-Contributors: multicouriers
+=== Clevers Shipping for Multicouriers ===
+Contributors: cleversdev
 Tags: shipping, chile, woocommerce, checkout blocks
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.6
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ WooCommerce shipping plugin for Chile with fixed rates by region/commune and opt
 
 == Description ==
 
-Multicouriers Shipping for WooCommerce adds shipping tools focused on Chile:
+Clevers Shipping for Multicouriers adds shipping tools focused on Chile:
 
 * Fixed shipping rates by region or commune (including exclude rules by commune).
 * Dynamic shipping quotes using the Multicouriers API (premium).
@@ -22,7 +22,7 @@ Multicouriers Shipping for WooCommerce adds shipping tools focused on Chile:
 
 == Installation ==
 
-1. Upload the `multicouriers-shipping-for-woocommerce` folder to `/wp-content/plugins/`.
+1. Upload the `clevers-shipping-for-multicouriers` folder to `/wp-content/plugins/`.
 2. Activate the plugin from `Plugins` in WordPress admin.
 3. Make sure WooCommerce is active.
 4. Go to `WooCommerce > Settings > Shipping` and add the Multicouriers shipping method(s) to the desired zones.
@@ -92,6 +92,16 @@ For the Chile cities dataset endpoint, the plugin performs a read-only request a
 3. Shipping method configuration inside WooCommerce shipping zones
 
 == Changelog ==
+
+= 1.0.8 =
+* Fix: Reorder display name and slug per reviewer feedback. Display name no longer begins with a third-party trademark; slug is `clevers-shipping-for-multicouriers`.
+* Docs: Update readme description and uninstall header to match the reserved slug.
+* Chore: Sync MCWS_VERSION constant, plugin header and readme stable tag to 1.0.8.
+
+= 1.0.7 =
+* Fix: Replace inline copy script on premium page with enqueued `assets/js/admin-premium.js`.
+* Docs: Add Terms and Privacy links for the Multicouriers API in the External Services section.
+* Docs: Update Contributors to `cleversdev` to match the plugin owner.
 
 = 1.0.6 =
 * Maintenance release with stability improvements.

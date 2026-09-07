@@ -10,8 +10,8 @@ class MCWS_Fixed_Rates_Method extends WC_Shipping_Method
     {
         $this->id = 'mcws_fixed_rates';
         $this->instance_id = absint($instance_id);
-        $this->method_title = __('Multicouriers Tarifa Fija', 'multicouriers-shipping-for-woocommerce');
-        $this->method_description = __('Tarifas fijas por comuna o region para Chile.', 'multicouriers-shipping-for-woocommerce');
+        $this->method_title = __('Multicouriers Tarifa Fija', 'clevers-shipping-for-multicouriers');
+        $this->method_description = __('Tarifas fijas por comuna o region para Chile.', 'clevers-shipping-for-multicouriers');
         $this->supports = array(
             'shipping-zones',
             'instance-settings',
@@ -21,7 +21,7 @@ class MCWS_Fixed_Rates_Method extends WC_Shipping_Method
         $this->init();
 
         $this->enabled = $this->get_option('enabled', 'yes');
-        $this->title = $this->get_option('title', __('Envio por region/comuna', 'multicouriers-shipping-for-woocommerce'));
+        $this->title = $this->get_option('title', __('Envio por region/comuna', 'clevers-shipping-for-multicouriers'));
     }
 
     public function init(): void
@@ -36,20 +36,20 @@ class MCWS_Fixed_Rates_Method extends WC_Shipping_Method
     {
         $this->instance_form_fields = array(
             'enabled' => array(
-                'title' => __('Activo', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Activo', 'clevers-shipping-for-multicouriers'),
                 'type' => 'checkbox',
                 'default' => 'yes',
             ),
             'title' => array(
-                'title' => __('Titulo', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Titulo', 'clevers-shipping-for-multicouriers'),
                 'type' => 'text',
-                'default' => __('Envio por region/comuna', 'multicouriers-shipping-for-woocommerce'),
+                'default' => __('Envio por region/comuna', 'clevers-shipping-for-multicouriers'),
             ),
             'default_cost' => array(
-                'title' => __('Tarifa por defecto (CLP)', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Tarifa por defecto (CLP)', 'clevers-shipping-for-multicouriers'),
                 'type' => 'price',
                 'default' => '0',
-                'description' => __('Se usa solo cuando no hay coincidencia en las reglas definidas en WooCommerce > Multicouriers Tarifas.', 'multicouriers-shipping-for-woocommerce'),
+                'description' => __('Se usa solo cuando no hay coincidencia en las reglas definidas en WooCommerce > Multicouriers Tarifas.', 'clevers-shipping-for-multicouriers'),
             ),
         );
     }

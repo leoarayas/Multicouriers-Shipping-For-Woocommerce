@@ -28,7 +28,7 @@ jobs:
       - name: Deploy plugin to WordPress.org (SVN)
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
-          SLUG: multicouriers-shipping-for-woocommerce
+          SLUG: clevers-shipping-for-multicouriers
           SVN_USERNAME: ${{ secrets.WORDPRESS_ORG_USERNAME }}
           SVN_PASSWORD: ${{ secrets.WORDPRESS_ORG_PASSWORD }}
         with:

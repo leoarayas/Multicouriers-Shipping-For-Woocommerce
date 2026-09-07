@@ -10,8 +10,8 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
     {
         $this->id = 'mcws_dynamic_rates';
         $this->instance_id = absint($instance_id);
-        $this->method_title = __('Multicouriers API (Premium)', 'multicouriers-shipping-for-woocommerce');
-        $this->method_description = __('Cotizacion dinamica de couriers via API de Multicouriers.', 'multicouriers-shipping-for-woocommerce');
+        $this->method_title = __('Multicouriers API (Premium)', 'clevers-shipping-for-multicouriers');
+        $this->method_description = __('Cotizacion dinamica de couriers via API de Multicouriers.', 'clevers-shipping-for-multicouriers');
         $this->supports = array(
             'shipping-zones',
             'instance-settings',
@@ -21,7 +21,7 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
         $this->init();
 
         $this->enabled = $this->get_option('enabled', 'no');
-        $this->title = $this->get_option('title', __('Envio con couriers', 'multicouriers-shipping-for-woocommerce'));
+        $this->title = $this->get_option('title', __('Envio con couriers', 'clevers-shipping-for-multicouriers'));
     }
 
     public function init(): void
@@ -59,77 +59,77 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
 
         $this->instance_form_fields = array(
             'enabled' => array(
-                'title' => __('Activo', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Activo', 'clevers-shipping-for-multicouriers'),
                 'type' => 'checkbox',
                 'default' => 'no',
             ),
             'title' => array(
-                'title' => __('Titulo', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Titulo', 'clevers-shipping-for-multicouriers'),
                 'type' => 'text',
-                'default' => __('Envio con couriers', 'multicouriers-shipping-for-woocommerce'),
+                'default' => __('Envio con couriers', 'clevers-shipping-for-multicouriers'),
             ),
             'origin_city' => array(
-                'title' => __('Comuna origen', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Comuna origen', 'clevers-shipping-for-multicouriers'),
                 'type' => 'text',
                 'default' => 'Santiago',
-                'description' => __('Se usa en la solicitud de cotizacion.', 'multicouriers-shipping-for-woocommerce'),
+                'description' => __('Se usa en la solicitud de cotizacion.', 'clevers-shipping-for-multicouriers'),
             ),
             'origin_state' => array(
-                'title' => __('Region origen', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Region origen', 'clevers-shipping-for-multicouriers'),
                 'type' => 'text',
                 'default' => 'CL-RM',
             ),
             'show_only_cheapest' => array(
-                'title' => __('Mostrar solo tarifa mas barata', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Mostrar solo tarifa mas barata', 'clevers-shipping-for-multicouriers'),
                 'type' => 'checkbox',
                 'default' => 'no',
             ),
             'enable_cache' => array(
-                'title' => __('Activar cache de cotizaciones', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Activar cache de cotizaciones', 'clevers-shipping-for-multicouriers'),
                 'type' => 'checkbox',
                 'default' => 'yes',
             ),
             'cache_minutes' => array(
-                'title' => __('Minutos cache', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Minutos cache', 'clevers-shipping-for-multicouriers'),
                 'type' => 'number',
                 'default' => '5',
             ),
             'enable_fixed_fallback' => array(
-                'title' => __('Fallback a tarifa fija si falla API', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Fallback a tarifa fija si falla API', 'clevers-shipping-for-multicouriers'),
                 'type' => 'checkbox',
                 'default' => 'yes',
             ),
             'fallback_label' => array(
-                'title' => __('Titulo fallback', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Titulo fallback', 'clevers-shipping-for-multicouriers'),
                 'type' => 'text',
-                'default' => __('Envio estandar', 'multicouriers-shipping-for-woocommerce'),
+                'default' => __('Envio estandar', 'clevers-shipping-for-multicouriers'),
             ),
             'fallback_default_cost' => array(
-                'title' => __('Costo fallback por defecto (CLP)', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Costo fallback por defecto (CLP)', 'clevers-shipping-for-multicouriers'),
                 'type' => 'price',
                 'default' => '0',
             ),
             'fallback_min_subtotal' => array(
-                'title' => __('Fallback subtotal minimo (CLP)', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Fallback subtotal minimo (CLP)', 'clevers-shipping-for-multicouriers'),
                 'type' => 'price',
                 'default' => '0',
-                'description' => __('0 = sin restriccion. Si el carrito tiene menos que este subtotal, no se aplica fallback.', 'multicouriers-shipping-for-woocommerce'),
+                'description' => __('0 = sin restriccion. Si el carrito tiene menos que este subtotal, no se aplica fallback.', 'clevers-shipping-for-multicouriers'),
             ),
             'fallback_categories' => array(
-                'title' => __('Fallback categorias permitidas', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Fallback categorias permitidas', 'clevers-shipping-for-multicouriers'),
                 'type' => 'multiselect',
                 'class' => 'wc-enhanced-select',
                 'options' => $category_options,
                 'default' => array(),
-                'description' => __('Si defines categorias, fallback solo aplica cuando el carrito contiene al menos una.', 'multicouriers-shipping-for-woocommerce'),
+                'description' => __('Si defines categorias, fallback solo aplica cuando el carrito contiene al menos una.', 'clevers-shipping-for-multicouriers'),
             ),
             'fallback_shipping_classes' => array(
-                'title' => __('Fallback clases de envio permitidas', 'multicouriers-shipping-for-woocommerce'),
+                'title' => __('Fallback clases de envio permitidas', 'clevers-shipping-for-multicouriers'),
                 'type' => 'multiselect',
                 'class' => 'wc-enhanced-select',
                 'options' => $shipping_class_options,
                 'default' => array(),
-                'description' => __('Si defines clases, fallback solo aplica cuando el carrito contiene al menos una.', 'multicouriers-shipping-for-woocommerce'),
+                'description' => __('Si defines clases, fallback solo aplica cuando el carrito contiene al menos una.', 'clevers-shipping-for-multicouriers'),
             ),
         );
     }
@@ -241,7 +241,7 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
 
         $this->add_rate(array(
             'id' => $this->id . ':' . $this->instance_id . ':fallback',
-            'label' => (string) $this->get_option('fallback_label', __('Envio estandar', 'multicouriers-shipping-for-woocommerce')),
+            'label' => (string) $this->get_option('fallback_label', __('Envio estandar', 'clevers-shipping-for-multicouriers')),
             'cost' => $cost,
             'meta_data' => array('fallback_reason' => $reason),
             'calc_tax' => 'per_order',
@@ -365,8 +365,8 @@ class MCWS_Dynamic_Rates_Method extends WC_Shipping_Method
 
             $normalized[] = array(
                 'id' => isset($rate['id']) ? (string) $rate['id'] : uniqid('mcws_', false),
-                'carrier' => isset($rate['carrier']) ? (string) $rate['carrier'] : __('Courier', 'multicouriers-shipping-for-woocommerce'),
-                'service' => isset($rate['service']) ? (string) $rate['service'] : __('Servicio', 'multicouriers-shipping-for-woocommerce'),
+                'carrier' => isset($rate['carrier']) ? (string) $rate['carrier'] : __('Courier', 'clevers-shipping-for-multicouriers'),
+                'service' => isset($rate['service']) ? (string) $rate['service'] : __('Servicio', 'clevers-shipping-for-multicouriers'),
                 'amount' => $amount,
                 'currency' => $rate_currency !== '' ? $rate_currency : $store_currency,
                 'eta' => isset($rate['eta']) ? (string) $rate['eta'] : '',

@@ -44,8 +44,8 @@ class MCWS_Admin
     {
         add_submenu_page(
             'woocommerce',
-            __('Multicouriers Tarifas Fijas', 'multicouriers-shipping-for-woocommerce'),
-            __('Multicouriers Tarifas', 'multicouriers-shipping-for-woocommerce'),
+            __('Multicouriers Tarifas Fijas', 'clevers-shipping-for-multicouriers'),
+            __('Multicouriers Tarifas', 'clevers-shipping-for-multicouriers'),
             'manage_woocommerce',
             'mcws-fixed-rates',
             array(__CLASS__, 'render_fixed_rates_page')
@@ -53,8 +53,8 @@ class MCWS_Admin
 
         add_submenu_page(
             'woocommerce',
-            __('Multicouriers Premium', 'multicouriers-shipping-for-woocommerce'),
-            __('Multicouriers Premium', 'multicouriers-shipping-for-woocommerce'),
+            __('Multicouriers Premium', 'clevers-shipping-for-multicouriers'),
+            __('Multicouriers Premium', 'clevers-shipping-for-multicouriers'),
             'manage_woocommerce',
             'mcws-premium-status',
             array(__CLASS__, 'render_premium_status_page')
@@ -103,7 +103,7 @@ class MCWS_Admin
     public static function render_fixed_rates_page(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No tienes permisos para acceder a esta pagina.', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No tienes permisos para acceder a esta pagina.', 'clevers-shipping-for-multicouriers'));
         }
 
         $rows = self::get_fixed_rates_table();
@@ -113,9 +113,9 @@ class MCWS_Admin
         self::render_admin_notice();
 
         echo '<div class="wrap">';
-        echo '<h1>' . esc_html__('Multicouriers Tarifas Fijas', 'multicouriers-shipping-for-woocommerce') . '</h1>';
-        echo '<p>' . esc_html__('Define tarifas por region o comuna. Comuna tiene prioridad sobre region.', 'multicouriers-shipping-for-woocommerce') . '</p>';
-        echo '<p>' . esc_html__('Selecciona una region y define regla: Todas (toda la region), Solamente (solo comunas seleccionadas) o Excluyendo (toda la region menos comunas seleccionadas).', 'multicouriers-shipping-for-woocommerce') . '</p>';
+        echo '<h1>' . esc_html__('Multicouriers Tarifas Fijas', 'clevers-shipping-for-multicouriers') . '</h1>';
+        echo '<p>' . esc_html__('Define tarifas por region o comuna. Comuna tiene prioridad sobre region.', 'clevers-shipping-for-multicouriers') . '</p>';
+        echo '<p>' . esc_html__('Selecciona una region y define regla: Todas (toda la region), Solamente (solo comunas seleccionadas) o Excluyendo (toda la region menos comunas seleccionadas).', 'clevers-shipping-for-multicouriers') . '</p>';
 
         echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
         wp_nonce_field('mcws_save_fixed_rates');
@@ -123,11 +123,11 @@ class MCWS_Admin
 
         echo '<table class="widefat striped" id="mcws-fixed-rates-table">';
         echo '<thead><tr>';
-        echo '<th style="width: 220px;">' . esc_html__('Region', 'multicouriers-shipping-for-woocommerce') . '</th>';
-        echo '<th style="width: 160px;">' . esc_html__('Regla', 'multicouriers-shipping-for-woocommerce') . '</th>';
-        echo '<th>' . esc_html__('Comunas', 'multicouriers-shipping-for-woocommerce') . '</th>';
-        echo '<th style="width: 180px;">' . esc_html__('Precio CLP', 'multicouriers-shipping-for-woocommerce') . '</th>';
-        echo '<th style="width: 90px;">' . esc_html__('Accion', 'multicouriers-shipping-for-woocommerce') . '</th>';
+        echo '<th style="width: 220px;">' . esc_html__('Region', 'clevers-shipping-for-multicouriers') . '</th>';
+        echo '<th style="width: 160px;">' . esc_html__('Regla', 'clevers-shipping-for-multicouriers') . '</th>';
+        echo '<th>' . esc_html__('Comunas', 'clevers-shipping-for-multicouriers') . '</th>';
+        echo '<th style="width: 180px;">' . esc_html__('Precio CLP', 'clevers-shipping-for-multicouriers') . '</th>';
+        echo '<th style="width: 90px;">' . esc_html__('Accion', 'clevers-shipping-for-multicouriers') . '</th>';
         echo '</tr></thead><tbody>';
 
         if (!empty($rows)) {
@@ -135,21 +135,21 @@ class MCWS_Admin
                 self::render_row($row, $states, is_array($cities) ? $cities : array());
             }
         } else {
-            echo '<tr class="mcws-empty-row"><td colspan="5">' . esc_html__('Sin reglas guardadas. Agrega una fila para comenzar.', 'multicouriers-shipping-for-woocommerce') . '</td></tr>';
+            echo '<tr class="mcws-empty-row"><td colspan="5">' . esc_html__('Sin reglas guardadas. Agrega una fila para comenzar.', 'clevers-shipping-for-multicouriers') . '</td></tr>';
         }
 
         echo '</tbody></table>';
-        echo '<p><button class="button" type="button" id="mcws-add-row">' . esc_html__('Agregar fila', 'multicouriers-shipping-for-woocommerce') . '</button></p>';
-        submit_button(__('Guardar tarifas', 'multicouriers-shipping-for-woocommerce'));
+        echo '<p><button class="button" type="button" id="mcws-add-row">' . esc_html__('Agregar fila', 'clevers-shipping-for-multicouriers') . '</button></p>';
+        submit_button(__('Guardar tarifas', 'clevers-shipping-for-multicouriers'));
         echo '</form>';
 
         echo '<hr />';
-        echo '<h2>' . esc_html__('Importador legacy', 'multicouriers-shipping-for-woocommerce') . '</h2>';
-        echo '<p>' . esc_html__('Importa tarifas desde metodos anteriores detectados en la base de datos.', 'multicouriers-shipping-for-woocommerce') . '</p>';
+        echo '<h2>' . esc_html__('Importador legacy', 'clevers-shipping-for-multicouriers') . '</h2>';
+        echo '<p>' . esc_html__('Importa tarifas desde metodos anteriores detectados en la base de datos.', 'clevers-shipping-for-multicouriers') . '</p>';
         echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
         wp_nonce_field('mcws_import_legacy_rates');
         echo '<input type="hidden" name="action" value="mcws_import_legacy_rates" />';
-        submit_button(__('Importar desde plugins antiguos', 'multicouriers-shipping-for-woocommerce'), 'secondary');
+        submit_button(__('Importar desde plugins antiguos', 'clevers-shipping-for-multicouriers'), 'secondary');
         echo '</form>';
 
         echo '</div>';
@@ -158,7 +158,7 @@ class MCWS_Admin
     public static function render_premium_status_page(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No tienes permisos para acceder a esta pagina.', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No tienes permisos para acceder a esta pagina.', 'clevers-shipping-for-multicouriers'));
         }
 
         self::render_admin_notice();
@@ -168,7 +168,7 @@ class MCWS_Admin
         $domain = (string) wp_parse_url(home_url(), PHP_URL_HOST);
         $api_url = self::get_api_base_url();
         $token = isset($premium_settings['api_token']) ? (string) $premium_settings['api_token'] : '';
-        $token_masked = $token !== '' ? substr($token, 0, 6) . '...' . substr($token, -4) : __('No configurado', 'multicouriers-shipping-for-woocommerce');
+        $token_masked = $token !== '' ? substr($token, 0, 6) . '...' . substr($token, -4) : __('No configurado', 'clevers-shipping-for-multicouriers');
         $diag = get_transient('mcws_latest_diagnostics');
         $quote_test = get_transient('mcws_latest_quote_test');
         $rotations = get_transient('mcws_latest_rotations');
@@ -205,27 +205,27 @@ class MCWS_Admin
         }
 
         echo '<div class="wrap">';
-        echo '<h1>' . esc_html__('Multicouriers Premium', 'multicouriers-shipping-for-woocommerce') . '</h1>';
-        echo '<p>' . esc_html__('Configura API URL y token. El diagnostico avanzado esta oculto por defecto.', 'multicouriers-shipping-for-woocommerce') . '</p>';
+        echo '<h1>' . esc_html__('Multicouriers Premium', 'clevers-shipping-for-multicouriers') . '</h1>';
+        echo '<p>' . esc_html__('Configura API URL y token. El diagnostico avanzado esta oculto por defecto.', 'clevers-shipping-for-multicouriers') . '</p>';
         echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="max-width:900px;margin:16px 0;padding:16px;background:#fff;border:1px solid #dcdcde;border-radius:6px;">';
         wp_nonce_field('mcws_activate_premium');
         echo '<input type="hidden" name="action" value="mcws_activate_premium" />';
-        echo '<h2 style="margin-top:0;">' . esc_html__('Activar Multicouriers Premium', 'multicouriers-shipping-for-woocommerce') . '</h2>';
-        echo '<p>' . esc_html__('Pega tu API Key de Multicouriers. La URL API es fija y no requiere cambios.', 'multicouriers-shipping-for-woocommerce') . '</p>';
-        echo '<p class="description">' . esc_html__('Este plugin se conecta a servicios externos de Multicouriers para cotizaciones, diagnostico y (en admin) actualizacion de comunas de Chile. Revisa el readme para detalle de datos enviados.', 'multicouriers-shipping-for-woocommerce') . '</p>';
-        echo '<p><strong>' . esc_html__('API URL fija:', 'multicouriers-shipping-for-woocommerce') . '</strong> <code>' . esc_html($api_url) . '</code></p>';
-        echo '<label for="mcws-api-token"><strong>' . esc_html__('API Key', 'multicouriers-shipping-for-woocommerce') . '</strong></label><br />';
+        echo '<h2 style="margin-top:0;">' . esc_html__('Activar Multicouriers Premium', 'clevers-shipping-for-multicouriers') . '</h2>';
+        echo '<p>' . esc_html__('Pega tu API Key de Multicouriers. La URL API es fija y no requiere cambios.', 'clevers-shipping-for-multicouriers') . '</p>';
+        echo '<p class="description">' . esc_html__('Este plugin se conecta a servicios externos de Multicouriers para cotizaciones, diagnostico y (en admin) actualizacion de comunas de Chile. Revisa el readme para detalle de datos enviados.', 'clevers-shipping-for-multicouriers') . '</p>';
+        echo '<p><strong>' . esc_html__('API URL fija:', 'clevers-shipping-for-multicouriers') . '</strong> <code>' . esc_html($api_url) . '</code></p>';
+        echo '<label for="mcws-api-token"><strong>' . esc_html__('API Key', 'clevers-shipping-for-multicouriers') . '</strong></label><br />';
         echo '<input id="mcws-api-token" name="mcws_api_token" type="password" class="regular-text" autocomplete="off" placeholder="mcws_live_xxx" />';
-        echo '<p class="description">' . esc_html__('Al activar, el plugin sincroniza automaticamente la clave en los metodos premium y habilita la configuracion necesaria.', 'multicouriers-shipping-for-woocommerce') . '</p>';
-        submit_button(__('Activar Premium', 'multicouriers-shipping-for-woocommerce'), 'primary', 'submit', false);
+        echo '<p class="description">' . esc_html__('Al activar, el plugin sincroniza automaticamente la clave en los metodos premium y habilita la configuracion necesaria.', 'clevers-shipping-for-multicouriers') . '</p>';
+        submit_button(__('Activar Premium', 'clevers-shipping-for-multicouriers'), 'primary', 'submit', false);
         echo '</form>';
 
         echo '<table class="widefat striped" style="max-width:900px">';
         echo '<tbody>';
-        self::status_row(__('Dominio tienda', 'multicouriers-shipping-for-woocommerce'), $domain !== '' ? $domain : '-');
-        self::status_row(__('API URL', 'multicouriers-shipping-for-woocommerce'), $api_url !== '' ? $api_url : __('No configurada', 'multicouriers-shipping-for-woocommerce'));
-        self::status_row(__('API token', 'multicouriers-shipping-for-woocommerce'), $token_masked);
-        self::status_row(__('Estado API', 'multicouriers-shipping-for-woocommerce'), ($api_url !== '' && $token !== '') ? __('Configurada', 'multicouriers-shipping-for-woocommerce') : __('Pendiente de configuracion', 'multicouriers-shipping-for-woocommerce'));
+        self::status_row(__('Dominio tienda', 'clevers-shipping-for-multicouriers'), $domain !== '' ? $domain : '-');
+        self::status_row(__('API URL', 'clevers-shipping-for-multicouriers'), $api_url !== '' ? $api_url : __('No configurada', 'clevers-shipping-for-multicouriers'));
+        self::status_row(__('API token', 'clevers-shipping-for-multicouriers'), $token_masked);
+        self::status_row(__('Estado API', 'clevers-shipping-for-multicouriers'), ($api_url !== '' && $token !== '') ? __('Configurada', 'clevers-shipping-for-multicouriers') : __('Pendiente de configuracion', 'clevers-shipping-for-multicouriers'));
         echo '</tbody>';
         echo '</table>';
 
@@ -233,30 +233,30 @@ class MCWS_Admin
         $hide_advanced_url = admin_url('admin.php?page=mcws-premium-status');
         echo '<p style="margin-top:12px;">';
         if ($show_advanced) {
-            echo '<a class="button" href="' . esc_url($hide_advanced_url) . '">' . esc_html__('Ocultar diagnostico avanzado', 'multicouriers-shipping-for-woocommerce') . '</a>';
+            echo '<a class="button" href="' . esc_url($hide_advanced_url) . '">' . esc_html__('Ocultar diagnostico avanzado', 'clevers-shipping-for-multicouriers') . '</a>';
         } else {
-            echo '<a class="button button-secondary" href="' . esc_url($show_advanced_url) . '">' . esc_html__('Mostrar diagnostico avanzado', 'multicouriers-shipping-for-woocommerce') . '</a>';
+            echo '<a class="button button-secondary" href="' . esc_url($show_advanced_url) . '">' . esc_html__('Mostrar diagnostico avanzado', 'clevers-shipping-for-multicouriers') . '</a>';
         }
         echo '</p>';
 
         if ($show_advanced) {
             echo '<hr />';
-            echo '<h2>' . esc_html__('Diagnostico avanzado', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+            echo '<h2>' . esc_html__('Diagnostico avanzado', 'clevers-shipping-for-multicouriers') . '</h2>';
 
             echo '<form method="get" action="' . esc_url(admin_url('admin.php')) . '" style="margin-top:12px;display:flex;gap:8px;align-items:center;">';
             echo '<input type="hidden" name="page" value="mcws-premium-status" />';
             echo '<input type="hidden" name="mcws_debug" value="1" />';
             wp_nonce_field('mcws_toggle_debug', 'mcws_debug_nonce');
             wp_nonce_field('mcws_filter_correlation', 'mcws_filter_nonce');
-            echo '<label for="mcws-correlation-search"><strong>' . esc_html__('Buscar Correlation ID', 'multicouriers-shipping-for-woocommerce') . '</strong></label>';
+            echo '<label for="mcws-correlation-search"><strong>' . esc_html__('Buscar Correlation ID', 'clevers-shipping-for-multicouriers') . '</strong></label>';
             echo '<input id="mcws-correlation-search" name="mcws_correlation" type="text" class="regular-text" value="' . esc_attr($filtered_correlation) . '" placeholder="mcws-uuid" />';
-            submit_button(__('Filtrar', 'multicouriers-shipping-for-woocommerce'), 'secondary', '', false);
+            submit_button(__('Filtrar', 'clevers-shipping-for-multicouriers'), 'secondary', '', false);
             echo '</form>';
 
             if ($filtered_correlation !== '') {
                 $clear_url = admin_url('admin.php?page=mcws-premium-status');
-                echo '<p><strong>' . esc_html__('Filtro Correlation activo:', 'multicouriers-shipping-for-woocommerce') . '</strong> <code>' . esc_html($filtered_correlation) . '</code> ';
-                echo '<a class="button button-link" href="' . esc_url($clear_url) . '">' . esc_html__('Limpiar filtro', 'multicouriers-shipping-for-woocommerce') . '</a></p>';
+                echo '<p><strong>' . esc_html__('Filtro Correlation activo:', 'clevers-shipping-for-multicouriers') . '</strong> <code>' . esc_html($filtered_correlation) . '</code> ';
+                echo '<a class="button button-link" href="' . esc_url($clear_url) . '">' . esc_html__('Limpiar filtro', 'clevers-shipping-for-multicouriers') . '</a></p>';
 
                 $timeline = self::build_correlation_timeline($filtered_correlation, $quote_test, $diag, $project_status, $rotations, $events);
                 self::render_correlation_timeline($filtered_correlation, $timeline);
@@ -268,15 +268,15 @@ class MCWS_Admin
                 $usage_limit = isset($project['usage_limit']) ? (int) $project['usage_limit'] : 0;
                 $usage_percent = isset($project['usage_percent']) ? (float) $project['usage_percent'] : 0.0;
                 $checked_at = isset($project_status['checked_at']) ? (string) $project_status['checked_at'] : '';
-                echo '<h2>' . esc_html__('Estado del proyecto', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+                echo '<h2>' . esc_html__('Estado del proyecto', 'clevers-shipping-for-multicouriers') . '</h2>';
                 echo '<table class="widefat striped" style="max-width:900px"><tbody>';
-                self::status_row(__('Project ID', 'multicouriers-shipping-for-woocommerce'), (string) ($project['id'] ?? '-'));
-                self::status_row(__('Nombre', 'multicouriers-shipping-for-woocommerce'), (string) ($project['name'] ?? '-'));
-                self::status_row(__('Dominio registrado', 'multicouriers-shipping-for-woocommerce'), (string) ($project['domain'] ?? '-'));
-                self::status_row(__('Consumo API', 'multicouriers-shipping-for-woocommerce'), $usage_count . ' / ' . $usage_limit);
-                self::status_row(__('Consumo %', 'multicouriers-shipping-for-woocommerce'), number_format($usage_percent, 2, '.', '') . '%');
-                self::status_row(__('Expira token', 'multicouriers-shipping-for-woocommerce'), (string) ($project['expires_at'] ?? '-'));
-                self::status_row(__('Ultima actualizacion', 'multicouriers-shipping-for-woocommerce'), $checked_at !== '' ? $checked_at : '-');
+                self::status_row(__('Project ID', 'clevers-shipping-for-multicouriers'), (string) ($project['id'] ?? '-'));
+                self::status_row(__('Nombre', 'clevers-shipping-for-multicouriers'), (string) ($project['name'] ?? '-'));
+                self::status_row(__('Dominio registrado', 'clevers-shipping-for-multicouriers'), (string) ($project['domain'] ?? '-'));
+                self::status_row(__('Consumo API', 'clevers-shipping-for-multicouriers'), $usage_count . ' / ' . $usage_limit);
+                self::status_row(__('Consumo %', 'clevers-shipping-for-multicouriers'), number_format($usage_percent, 2, '.', '') . '%');
+                self::status_row(__('Expira token', 'clevers-shipping-for-multicouriers'), (string) ($project['expires_at'] ?? '-'));
+                self::status_row(__('Ultima actualizacion', 'clevers-shipping-for-multicouriers'), $checked_at !== '' ? $checked_at : '-');
                 echo '</tbody></table>';
             }
 
@@ -284,7 +284,7 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_run_diagnostics');
             echo '<input type="hidden" name="action" value="mcws_run_diagnostics" />';
-            submit_button(__('Ejecutar diagnostico de API', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            submit_button(__('Ejecutar diagnostico de API', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
@@ -292,7 +292,7 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_export_diagnostics');
             echo '<input type="hidden" name="action" value="mcws_export_diagnostics" />';
-            submit_button(__('Exportar diagnostico (JSON)', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            submit_button(__('Exportar diagnostico (JSON)', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
@@ -300,7 +300,7 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_export_diagnostics_csv');
             echo '<input type="hidden" name="action" value="mcws_export_diagnostics_csv" />';
-            submit_button(__('Exportar diagnostico (CSV)', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            submit_button(__('Exportar diagnostico (CSV)', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
@@ -308,8 +308,8 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_export_health_snapshot');
             echo '<input type="hidden" name="action" value="mcws_export_health_snapshot" />';
-            echo '<label><input type="checkbox" name="mcws_health_live" value="1" /> ' . esc_html__('Incluir chequeos live API', 'multicouriers-shipping-for-woocommerce') . '</label> ';
-            submit_button(__('Exportar health (JSON)', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            echo '<label><input type="checkbox" name="mcws_health_live" value="1" /> ' . esc_html__('Incluir chequeos live API', 'clevers-shipping-for-multicouriers') . '</label> ';
+            submit_button(__('Exportar health (JSON)', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
@@ -317,7 +317,7 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_fetch_project_status');
             echo '<input type="hidden" name="action" value="mcws_fetch_project_status" />';
-            submit_button(__('Actualizar estado del proyecto', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            submit_button(__('Actualizar estado del proyecto', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
@@ -325,7 +325,7 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_rotate_token');
             echo '<input type="hidden" name="action" value="mcws_rotate_token" />';
-            submit_button(__('Rotar API token automaticamente', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            submit_button(__('Rotar API token automaticamente', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
@@ -333,38 +333,38 @@ class MCWS_Admin
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             wp_nonce_field('mcws_fetch_rotations');
             echo '<input type="hidden" name="action" value="mcws_fetch_rotations" />';
-            submit_button(__('Cargar historial de rotaciones', 'multicouriers-shipping-for-woocommerce'), 'secondary', 'submit', false);
+            submit_button(__('Cargar historial de rotaciones', 'clevers-shipping-for-multicouriers'), 'secondary', 'submit', false);
             echo '</form>';
             echo '</p>';
 
-            echo '<h2>' . esc_html__('Test quote', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+            echo '<h2>' . esc_html__('Test quote', 'clevers-shipping-for-multicouriers') . '</h2>';
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="max-width:900px;">';
             wp_nonce_field('mcws_test_quote');
             echo '<input type="hidden" name="action" value="mcws_test_quote" />';
             echo '<table class="form-table" role="presentation"><tbody>';
-            echo '<tr><th><label for="mcws_test_state">' . esc_html__('Region destino', 'multicouriers-shipping-for-woocommerce') . '</label></th><td><input id="mcws_test_state" name="mcws_test_state" type="text" value="CL-RM" class="regular-text" /></td></tr>';
-            echo '<tr><th><label for="mcws_test_city">' . esc_html__('Comuna destino', 'multicouriers-shipping-for-woocommerce') . '</label></th><td><input id="mcws_test_city" name="mcws_test_city" type="text" value="Santiago" class="regular-text" /></td></tr>';
-            echo '<tr><th><label for="mcws_test_postcode">' . esc_html__('Codigo postal destino', 'multicouriers-shipping-for-woocommerce') . '</label></th><td><input id="mcws_test_postcode" name="mcws_test_postcode" type="text" value="" class="regular-text" /></td></tr>';
-            echo '<tr><th><label for="mcws_test_weight">' . esc_html__('Peso (kg)', 'multicouriers-shipping-for-woocommerce') . '</label></th><td><input id="mcws_test_weight" name="mcws_test_weight" type="number" min="0.1" step="0.1" value="1" class="small-text" /></td></tr>';
+            echo '<tr><th><label for="mcws_test_state">' . esc_html__('Region destino', 'clevers-shipping-for-multicouriers') . '</label></th><td><input id="mcws_test_state" name="mcws_test_state" type="text" value="CL-RM" class="regular-text" /></td></tr>';
+            echo '<tr><th><label for="mcws_test_city">' . esc_html__('Comuna destino', 'clevers-shipping-for-multicouriers') . '</label></th><td><input id="mcws_test_city" name="mcws_test_city" type="text" value="Santiago" class="regular-text" /></td></tr>';
+            echo '<tr><th><label for="mcws_test_postcode">' . esc_html__('Codigo postal destino', 'clevers-shipping-for-multicouriers') . '</label></th><td><input id="mcws_test_postcode" name="mcws_test_postcode" type="text" value="" class="regular-text" /></td></tr>';
+            echo '<tr><th><label for="mcws_test_weight">' . esc_html__('Peso (kg)', 'clevers-shipping-for-multicouriers') . '</label></th><td><input id="mcws_test_weight" name="mcws_test_weight" type="number" min="0.1" step="0.1" value="1" class="small-text" /></td></tr>';
             echo '</tbody></table>';
-            submit_button(__('Ejecutar test quote', 'multicouriers-shipping-for-woocommerce'), 'primary', 'submit', false);
+            submit_button(__('Ejecutar test quote', 'clevers-shipping-for-multicouriers'), 'primary', 'submit', false);
             echo '</form>';
 
             if (is_array($quote_test)) {
-            echo '<h3>' . esc_html__('Ultimo test quote', 'multicouriers-shipping-for-woocommerce') . '</h3>';
+            echo '<h3>' . esc_html__('Ultimo test quote', 'clevers-shipping-for-multicouriers') . '</h3>';
             echo '<table class="widefat striped" style="max-width:900px"><tbody>';
-            self::status_row(__('Fecha', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['time'] ?? '-'));
-            self::status_row(__('Destino', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['destination'] ?? '-'));
-            self::status_row(__('Resultado API', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['api_result'] ?? '-'));
-            self::status_row(__('Tarifas recibidas', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['rates_count'] ?? '0'));
-            self::status_row(__('Fallback estimado (CLP)', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['fallback_cost'] ?? '0'));
-            self::status_row(__('Mensaje', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['message'] ?? ''));
-            self::status_row(__('Correlation ID', 'multicouriers-shipping-for-woocommerce'), (string) ($quote_test['correlation_id'] ?? '-'));
+            self::status_row(__('Fecha', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['time'] ?? '-'));
+            self::status_row(__('Destino', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['destination'] ?? '-'));
+            self::status_row(__('Resultado API', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['api_result'] ?? '-'));
+            self::status_row(__('Tarifas recibidas', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['rates_count'] ?? '0'));
+            self::status_row(__('Fallback estimado (CLP)', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['fallback_cost'] ?? '0'));
+            self::status_row(__('Mensaje', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['message'] ?? ''));
+            self::status_row(__('Correlation ID', 'clevers-shipping-for-multicouriers'), (string) ($quote_test['correlation_id'] ?? '-'));
             echo '</tbody></table>';
 
             $rates = isset($quote_test['rates']) && is_array($quote_test['rates']) ? $quote_test['rates'] : array();
             if (!empty($rates)) {
-                echo '<h4>' . esc_html__('Tarifas devueltas', 'multicouriers-shipping-for-woocommerce') . '</h4>';
+                echo '<h4>' . esc_html__('Tarifas devueltas', 'clevers-shipping-for-multicouriers') . '</h4>';
                 echo '<table class="widefat striped" style="max-width:1200px">';
                 echo '<thead><tr><th>Carrier</th><th>Servicio</th><th>Monto</th><th>Moneda</th><th>ETA</th></tr></thead><tbody>';
                 foreach ($rates as $rate) {
@@ -385,30 +385,30 @@ class MCWS_Admin
             $payload_json = isset($quote_test['payload']) ? wp_json_encode($quote_test['payload'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : '{}';
             $response_json = isset($quote_test['response']) ? wp_json_encode($quote_test['response'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) : '{}';
 
-            echo '<h4>' . esc_html__('Payload (copiar)', 'multicouriers-shipping-for-woocommerce') . '</h4>';
+            echo '<h4>' . esc_html__('Payload (copiar)', 'clevers-shipping-for-multicouriers') . '</h4>';
             echo '<textarea id="mcws-payload-json" readonly rows="12" style="width:100%;max-width:1200px;font-family:monospace;">' . esc_textarea((string) $payload_json) . '</textarea>';
             echo '<p><button type="button" class="button mcws-copy-text" data-copy-target="mcws-payload-json">Copiar payload</button></p>';
 
-            echo '<h4>' . esc_html__('Response (copiar)', 'multicouriers-shipping-for-woocommerce') . '</h4>';
+            echo '<h4>' . esc_html__('Response (copiar)', 'clevers-shipping-for-multicouriers') . '</h4>';
             echo '<textarea id="mcws-response-json" readonly rows="16" style="width:100%;max-width:1200px;font-family:monospace;">' . esc_textarea((string) $response_json) . '</textarea>';
             echo '<p><button type="button" class="button mcws-copy-text" data-copy-target="mcws-response-json">Copiar response</button></p>';
         }
 
             if (is_array($diag)) {
-            echo '<h2>' . esc_html__('Ultimo diagnostico', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+            echo '<h2>' . esc_html__('Ultimo diagnostico', 'clevers-shipping-for-multicouriers') . '</h2>';
             echo '<table class="widefat striped" style="max-width:900px">';
             echo '<tbody>';
-            self::status_row(__('Fecha', 'multicouriers-shipping-for-woocommerce'), (string) ($diag['time'] ?? '-'));
-            self::status_row(__('Reachability API', 'multicouriers-shipping-for-woocommerce'), (string) ($diag['reachability'] ?? '-'));
-            self::status_row(__('HTTP Status', 'multicouriers-shipping-for-woocommerce'), (string) ($diag['http_status'] ?? '-'));
-            self::status_row(__('Mensaje', 'multicouriers-shipping-for-woocommerce'), (string) ($diag['message'] ?? '-'));
-            self::status_row(__('Correlation ID', 'multicouriers-shipping-for-woocommerce'), (string) ($diag['correlation_id'] ?? '-'));
+            self::status_row(__('Fecha', 'clevers-shipping-for-multicouriers'), (string) ($diag['time'] ?? '-'));
+            self::status_row(__('Reachability API', 'clevers-shipping-for-multicouriers'), (string) ($diag['reachability'] ?? '-'));
+            self::status_row(__('HTTP Status', 'clevers-shipping-for-multicouriers'), (string) ($diag['http_status'] ?? '-'));
+            self::status_row(__('Mensaje', 'clevers-shipping-for-multicouriers'), (string) ($diag['message'] ?? '-'));
+            self::status_row(__('Correlation ID', 'clevers-shipping-for-multicouriers'), (string) ($diag['correlation_id'] ?? '-'));
             echo '</tbody>';
             echo '</table>';
         }
 
             if (is_array($rotations) && !empty($rotations)) {
-            echo '<h2>' . esc_html__('Historial de rotaciones de token', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+            echo '<h2>' . esc_html__('Historial de rotaciones de token', 'clevers-shipping-for-multicouriers') . '</h2>';
             echo '<table class="widefat striped" style="max-width:1400px">';
             echo '<thead><tr><th>Fecha</th><th>Dominio</th><th>Old</th><th>New</th><th>IP</th><th>Correlation ID</th></tr></thead><tbody>';
             foreach ($rotations as $row) {
@@ -427,9 +427,9 @@ class MCWS_Admin
             echo '</tbody></table>';
         }
 
-            echo '<h2>' . esc_html__('Eventos recientes', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+            echo '<h2>' . esc_html__('Eventos recientes', 'clevers-shipping-for-multicouriers') . '</h2>';
             if (empty($events)) {
-                echo '<p>' . esc_html__('Sin eventos recientes.', 'multicouriers-shipping-for-woocommerce') . '</p>';
+                echo '<p>' . esc_html__('Sin eventos recientes.', 'clevers-shipping-for-multicouriers') . '</p>';
             } else {
                 echo '<table class="widefat striped" style="max-width:1200px">';
                 echo '<thead><tr><th>Fecha</th><th>Nivel</th><th>Mensaje</th><th>Correlation</th><th>Contexto</th></tr></thead><tbody>';
@@ -453,7 +453,7 @@ class MCWS_Admin
     public static function handle_activate_premium(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_activate_premium');
@@ -461,7 +461,7 @@ class MCWS_Admin
         $token = isset($_POST['mcws_api_token']) ? sanitize_text_field((string) wp_unslash($_POST['mcws_api_token'])) : '';
         $token = trim($token);
         if ($token === '') {
-            self::set_notice('warning', __('Debes ingresar una API Key para activar Premium.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Debes ingresar una API Key para activar Premium.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -472,7 +472,7 @@ class MCWS_Admin
 
         $message = sprintf(
             /* translators: 1: Number of synced dynamic instances, 2: Number of created shipping methods in zones. */
-            __('Premium activado. Instancias sincronizadas: %1$d. Metodos creados automaticamente: %2$d.', 'multicouriers-shipping-for-woocommerce'),
+            __('Premium activado. Instancias sincronizadas: %1$d. Metodos creados automaticamente: %2$d.', 'clevers-shipping-for-multicouriers'),
             $synced_instances,
             $created_methods
         );
@@ -485,7 +485,7 @@ class MCWS_Admin
     public static function handle_run_diagnostics(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_run_diagnostics');
@@ -495,7 +495,7 @@ class MCWS_Admin
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            self::set_notice('warning', __('Configura API URL y token en el metodo premium para ejecutar diagnostico.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Configura API URL y token en el metodo premium para ejecutar diagnostico.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -515,10 +515,10 @@ class MCWS_Admin
 
         if (!empty($ping['ok'])) {
             MCWS_Logger::info('Diagnostico API exitoso', $diag);
-            self::set_notice('success', __('Diagnostico ejecutado correctamente.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('success', __('Diagnostico ejecutado correctamente.', 'clevers-shipping-for-multicouriers'));
         } else {
             MCWS_Logger::warning('Diagnostico API con error', $diag);
-            self::set_notice('warning', __('Diagnostico ejecutado con errores. Revisa el panel.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Diagnostico ejecutado con errores. Revisa el panel.', 'clevers-shipping-for-multicouriers'));
         }
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
@@ -528,7 +528,7 @@ class MCWS_Admin
     public static function handle_export_diagnostics(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_export_diagnostics');
@@ -565,7 +565,7 @@ class MCWS_Admin
     public static function handle_export_diagnostics_csv(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_export_diagnostics_csv');
@@ -625,7 +625,7 @@ class MCWS_Admin
     public static function handle_export_health_snapshot(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_export_health_snapshot');
@@ -645,7 +645,7 @@ class MCWS_Admin
     public static function handle_rotate_token(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_rotate_token');
@@ -655,7 +655,7 @@ class MCWS_Admin
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            self::set_notice('warning', __('Configura API URL y token antes de rotar.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Configura API URL y token antes de rotar.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -665,7 +665,7 @@ class MCWS_Admin
 
         if (empty($rotation['ok']) || empty($rotation['new_key'])) {
             MCWS_Logger::warning('Rotacion de token fallida', array('error' => $rotation['error'] ?? '', 'correlation_id' => $rotation['correlation_id'] ?? ''));
-            self::set_notice('warning', __('No se pudo rotar token: ', 'multicouriers-shipping-for-woocommerce') . (string) ($rotation['error'] ?? ''));
+            self::set_notice('warning', __('No se pudo rotar token: ', 'clevers-shipping-for-multicouriers') . (string) ($rotation['error'] ?? ''));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -675,7 +675,7 @@ class MCWS_Admin
         self::sync_dynamic_instances_credentials($new_token);
 
         MCWS_Logger::info('Token rotado correctamente', array('correlation_id' => $rotation['correlation_id'] ?? ''));
-        self::set_notice('success', __('Token rotado y guardado correctamente.', 'multicouriers-shipping-for-woocommerce'));
+        self::set_notice('success', __('Token rotado y guardado correctamente.', 'clevers-shipping-for-multicouriers'));
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
         exit;
@@ -684,7 +684,7 @@ class MCWS_Admin
     public static function handle_fetch_rotations(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_fetch_rotations');
@@ -694,7 +694,7 @@ class MCWS_Admin
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            self::set_notice('warning', __('Configura API URL y token antes de consultar historial.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Configura API URL y token antes de consultar historial.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -704,14 +704,14 @@ class MCWS_Admin
 
         if (empty($rotations['ok'])) {
             MCWS_Logger::warning('No se pudo obtener historial de rotaciones', array('error' => $rotations['error'] ?? '', 'correlation_id' => $rotations['correlation_id'] ?? ''));
-            self::set_notice('warning', __('Error consultando historial: ', 'multicouriers-shipping-for-woocommerce') . (string) ($rotations['error'] ?? ''));
+            self::set_notice('warning', __('Error consultando historial: ', 'clevers-shipping-for-multicouriers') . (string) ($rotations['error'] ?? ''));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
 
         set_transient('mcws_latest_rotations', $rotations['rotations'], 30 * MINUTE_IN_SECONDS);
         MCWS_Logger::info('Historial de rotaciones actualizado', array('count' => count($rotations['rotations']), 'correlation_id' => $rotations['correlation_id'] ?? ''));
-        self::set_notice('success', __('Historial de rotaciones actualizado.', 'multicouriers-shipping-for-woocommerce'));
+        self::set_notice('success', __('Historial de rotaciones actualizado.', 'clevers-shipping-for-multicouriers'));
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
         exit;
@@ -720,16 +720,16 @@ class MCWS_Admin
     public static function handle_fetch_project_status(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_fetch_project_status');
 
         $ok = self::refresh_project_status(false);
         if ($ok) {
-            self::set_notice('success', __('Estado del proyecto actualizado.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('success', __('Estado del proyecto actualizado.', 'clevers-shipping-for-multicouriers'));
         } else {
-            self::set_notice('warning', __('No se pudo actualizar estado del proyecto. Revisa API URL/token.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('No se pudo actualizar estado del proyecto. Revisa API URL/token.', 'clevers-shipping-for-multicouriers'));
         }
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
@@ -739,7 +739,7 @@ class MCWS_Admin
     public static function handle_test_quote(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_test_quote');
@@ -749,7 +749,7 @@ class MCWS_Admin
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            self::set_notice('warning', __('Configura API URL y token en el metodo premium para ejecutar test quote.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Configura API URL y token en el metodo premium para ejecutar test quote.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -795,7 +795,7 @@ class MCWS_Admin
             'api_result' => !empty($response['ok']) ? 'OK' : 'ERROR',
             'rates_count' => count($rates),
             'fallback_cost' => (string) $fallback_cost,
-            'message' => !empty($response['ok']) ? __('Cotizacion API recibida', 'multicouriers-shipping-for-woocommerce') : (string) ($response['error'] ?? ''),
+            'message' => !empty($response['ok']) ? __('Cotizacion API recibida', 'clevers-shipping-for-multicouriers') : (string) ($response['error'] ?? ''),
             'correlation_id' => (string) ($response['correlation_id'] ?? ''),
             'rates' => array_slice($rates, 0, 50),
             'payload' => $payload,
@@ -806,10 +806,10 @@ class MCWS_Admin
 
         if (!empty($response['ok'])) {
             MCWS_Logger::info('Test quote ejecutado', $result);
-            self::set_notice('success', __('Test quote ejecutado correctamente.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('success', __('Test quote ejecutado correctamente.', 'clevers-shipping-for-multicouriers'));
         } else {
             MCWS_Logger::warning('Test quote con error', $result);
-            self::set_notice('warning', __('Test quote ejecutado con errores. Revisa el resultado.', 'multicouriers-shipping-for-woocommerce'));
+            self::set_notice('warning', __('Test quote ejecutado con errores. Revisa el resultado.', 'clevers-shipping-for-multicouriers'));
         }
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
@@ -837,7 +837,7 @@ class MCWS_Admin
         echo '<tr class="mcws-rate-row">';
         echo '<td>';
         echo '<select name="mcws_region[]" class="mcws-region">';
-        echo '<option value="">' . esc_html__('Selecciona region', 'multicouriers-shipping-for-woocommerce') . '</option>';
+        echo '<option value="">' . esc_html__('Selecciona region', 'clevers-shipping-for-multicouriers') . '</option>';
         foreach ($states as $code => $name) {
             printf('<option value="%1$s" %2$s>%1$s - %3$s</option>', esc_attr((string) $code), selected($region, (string) $code, false), esc_html((string) $name));
         }
@@ -846,15 +846,15 @@ class MCWS_Admin
 
         echo '<td>';
         echo '<select name="mcws_commune_mode[]" class="mcws-commune-mode">';
-        echo '<option value="all" ' . selected($commune_mode, 'all', false) . '>' . esc_html__('Todas', 'multicouriers-shipping-for-woocommerce') . '</option>';
-        echo '<option value="only" ' . selected($commune_mode, 'only', false) . '>' . esc_html__('Solamente', 'multicouriers-shipping-for-woocommerce') . '</option>';
-        echo '<option value="exclude" ' . selected($commune_mode, 'exclude', false) . '>' . esc_html__('Excluyendo', 'multicouriers-shipping-for-woocommerce') . '</option>';
+        echo '<option value="all" ' . selected($commune_mode, 'all', false) . '>' . esc_html__('Todas', 'clevers-shipping-for-multicouriers') . '</option>';
+        echo '<option value="only" ' . selected($commune_mode, 'only', false) . '>' . esc_html__('Solamente', 'clevers-shipping-for-multicouriers') . '</option>';
+        echo '<option value="exclude" ' . selected($commune_mode, 'exclude', false) . '>' . esc_html__('Excluyendo', 'clevers-shipping-for-multicouriers') . '</option>';
         echo '</select>';
         echo '</td>';
 
         echo '<td>';
         echo '<select class="mcws-communes wc-enhanced-select" multiple="multiple" data-selected-csv="' . esc_attr($communes_csv) . '">';
-        echo '<option value="">' . esc_html__('Selecciona comuna', 'multicouriers-shipping-for-woocommerce') . '</option>';
+        echo '<option value="">' . esc_html__('Selecciona comuna', 'clevers-shipping-for-multicouriers') . '</option>';
         $communes = isset($cities[$region]) && is_array($cities[$region]) ? $cities[$region] : array();
         $selected_map = array_fill_keys($communes_list, true);
         foreach ($communes as $city_name) {
@@ -882,14 +882,14 @@ class MCWS_Admin
         echo '<input type="hidden" name="mcws_communes_csv[]" class="mcws-communes-csv" value="' . esc_attr($communes_csv) . '" />';
         echo '</td>';
         echo '<td><input type="number" min="0" step="1" name="mcws_cost[]" value="' . esc_attr($cost) . '" /></td>';
-        echo '<td><button class="button-link-delete mcws-remove-row" type="button">' . esc_html__('Eliminar', 'multicouriers-shipping-for-woocommerce') . '</button></td>';
+        echo '<td><button class="button-link-delete mcws-remove-row" type="button">' . esc_html__('Eliminar', 'clevers-shipping-for-multicouriers') . '</button></td>';
         echo '</tr>';
     }
 
     public static function handle_save_fixed_rates(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_save_fixed_rates');
@@ -939,7 +939,7 @@ class MCWS_Admin
         update_option(self::OPTION_FIXED_RATES_TABLE, $rows);
         MCWS_Logger::info('Tarifas fijas actualizadas', array('rows' => count($rows)));
 
-        self::set_notice('success', __('Tarifas guardadas correctamente.', 'multicouriers-shipping-for-woocommerce'));
+        self::set_notice('success', __('Tarifas guardadas correctamente.', 'clevers-shipping-for-multicouriers'));
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-fixed-rates'));
         exit;
@@ -948,7 +948,7 @@ class MCWS_Admin
     public static function handle_import_legacy_rates(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'multicouriers-shipping-for-woocommerce'));
+            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_import_legacy_rates');
@@ -1044,7 +1044,7 @@ class MCWS_Admin
 
         $msg = sprintf(
             /* translators: 1: Number of imported rows, 2: Number of skipped rows. */
-            __('Importacion completada. Filas cargadas: %1$d. Filas omitidas: %2$d.', 'multicouriers-shipping-for-woocommerce'),
+            __('Importacion completada. Filas cargadas: %1$d. Filas omitidas: %2$d.', 'clevers-shipping-for-multicouriers'),
             count($imported),
             $skipped
         );
@@ -1194,7 +1194,7 @@ class MCWS_Admin
         $limit = isset($project['usage_limit']) ? (int) $project['usage_limit'] : 0;
         $message = sprintf(
             /* translators: 1: API usage percent, 2: API request count used, 3: API request limit. */
-            __('Alerta Multicouriers: consumo API en %1$s%% (%2$d/%3$d). Revisa WooCommerce > Multicouriers Premium.', 'multicouriers-shipping-for-woocommerce'),
+            __('Alerta Multicouriers: consumo API en %1$s%% (%2$d/%3$d). Revisa WooCommerce > Multicouriers Premium.', 'clevers-shipping-for-multicouriers'),
             number_format($percent, 2, '.', ''),
             $count,
             $limit
@@ -1324,9 +1324,9 @@ class MCWS_Admin
 
     private static function render_correlation_timeline(string $correlation_id, array $timeline): void
     {
-        echo '<h2>' . esc_html__('Timeline de Correlation ID', 'multicouriers-shipping-for-woocommerce') . '</h2>';
+        echo '<h2>' . esc_html__('Timeline de Correlation ID', 'clevers-shipping-for-multicouriers') . '</h2>';
         if (empty($timeline)) {
-            echo '<p>' . esc_html__('No hay eventos correlacionados en los datos actuales del panel.', 'multicouriers-shipping-for-woocommerce') . '</p>';
+            echo '<p>' . esc_html__('No hay eventos correlacionados en los datos actuales del panel.', 'clevers-shipping-for-multicouriers') . '</p>';
             return;
         }
 

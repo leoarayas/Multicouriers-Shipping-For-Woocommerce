@@ -12,7 +12,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html):
 
 The version must be consistent across three locations:
 
-1. `multicouriers-shipping-for-woocommerce.php` — Plugin header `Version:` and `MCWS_VERSION` constant
+1. `clevers-shipping-for-multicouriers.php` — Plugin header `Version:` and `MCWS_VERSION` constant
 2. `readme.txt` — `Stable tag:` field
 3. Git tag — `vX.Y.Z` format
 
@@ -93,7 +93,7 @@ php tests/run-all.php
 - Follow WordPress Coding Standards (WPCS)
 - Use `MCWS_` prefix for all classes and functions
 - Use `mcws_` prefix for options, transients, and hooks
-- Text domain: `multicouriers-shipping-for-woocommerce`
+- Text domain: `clevers-shipping-for-multicouriers`
 
 ## Release Process
 

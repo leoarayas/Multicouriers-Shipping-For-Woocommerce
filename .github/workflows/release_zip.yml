@@ -14,8 +14,8 @@ permissions:
   contents: write
 
 env:
-  PLUGIN_SLUG: multicouriers-shipping-for-woocommerce
-  PLUGIN_MAIN: multicouriers-shipping-for-woocommerce.php
+  PLUGIN_SLUG: clevers-shipping-for-multicouriers
+  PLUGIN_MAIN: clevers-shipping-for-multicouriers.php
   DISTIGNORE: .distignore
   BUILD_ROOT: .release-build
 

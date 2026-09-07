@@ -1,6 +1,6 @@
 <?php
 /**
- * Uninstall routine for Multicouriers Shipping for WooCommerce.
+ * Uninstall routine for Clevers Shipping for Multicouriers.
  *
  * Deletes plugin-specific options and transients. WooCommerce shipping-zone
  * method instance settings are intentionally preserved to avoid removing

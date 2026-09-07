@@ -16,7 +16,7 @@
 
 declare(strict_types=1);
 
-$main_file = __DIR__ . '/../multicouriers-shipping-for-woocommerce.php';
+$main_file = __DIR__ . '/../clevers-shipping-for-multicouriers.php';
 $readme_file = __DIR__ . '/../readme.txt';
 
 if (!file_exists($main_file)) {
