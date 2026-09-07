@@ -57,6 +57,19 @@ require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-logger.php';
 require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-utils.php';
 require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-fallback-rates.php';
 require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-api-client.php';
+
+// Admin UI split (CLE-84): MCWS_Admin is the coordinator, the other
+// classes own one responsibility each. Load Settings first because the
+// others reference it; Pages last because every handler writes notices
+// through it.
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-settings.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-rest.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-correlation.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-project-status.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-form-handler.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-diagnostics.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-page-renderer.php';
+require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin-menu.php';
 require_once MCWS_PLUGIN_DIR . 'includes/class-mcws-admin.php';
 
 add_action('before_woocommerce_init', static function () {
