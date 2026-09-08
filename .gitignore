@@ -3,3 +3,6 @@
 *.zip
 node_modules/
 dist/
+
+# Release build artifacts (created by .github/workflows/release_zip.yml)
+.release-build/
