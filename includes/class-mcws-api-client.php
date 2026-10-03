@@ -24,7 +24,7 @@ class MCWS_Api_Client
             MCWS_Logger::warning('Circuit breaker abierto, evitando llamada API', array('base_url' => $this->base_url));
             return array(
                 'ok' => false,
-                'error' => __('Temporalmente pausado por errores consecutivos. Reintenta en unos minutos.', 'clevers-shipping-for-multicouriers'),
+                'error' => __('Temporarily paused due to consecutive errors. Try again in a few minutes.', 'clevers-shipping-for-multicouriers'),
                 'rates' => array(),
                 'correlation_id' => '',
             );
@@ -96,7 +96,7 @@ class MCWS_Api_Client
             if ($status < 200 || $status >= 300 || !is_array($data)) {
                 $result = array(
                     'ok' => false,
-                    'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('Error al consultar Multicouriers.', 'clevers-shipping-for-multicouriers'),
+                    'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('Error consulting Multicouriers.', 'clevers-shipping-for-multicouriers'),
                     'rates' => array(),
                     'correlation_id' => $correlation,
                 );
@@ -126,7 +126,7 @@ class MCWS_Api_Client
         $this->mark_failure();
         return array(
             'ok' => false,
-            'error' => __('No fue posible cotizar en este momento.', 'clevers-shipping-for-multicouriers'),
+            'error' => __('It was not possible to quote at this time.', 'clevers-shipping-for-multicouriers'),
             'rates' => array(),
             'correlation_id' => '',
         );
@@ -168,7 +168,7 @@ class MCWS_Api_Client
         if ($status < 200 || $status >= 300 || !is_array($data) || empty($data['new_key'])) {
             return array(
                 'ok' => false,
-                'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('No se pudo rotar token.', 'clevers-shipping-for-multicouriers'),
+                'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('Could not rotate token.', 'clevers-shipping-for-multicouriers'),
                 'new_key' => '',
                 'correlation_id' => $correlation,
             );
@@ -211,7 +211,7 @@ class MCWS_Api_Client
         if ($status < 200 || $status >= 300 || !is_array($data)) {
             return array(
                 'ok' => false,
-                'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('No se pudo obtener historial de rotaciones.', 'clevers-shipping-for-multicouriers'),
+                'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('Could not get rotation history.', 'clevers-shipping-for-multicouriers'),
                 'rotations' => array(),
                 'correlation_id' => $correlation,
             );
@@ -258,7 +258,7 @@ class MCWS_Api_Client
         if ($status < 200 || $status >= 300 || !is_array($data) || empty($data['project']) || !is_array($data['project'])) {
             return array(
                 'ok' => false,
-                'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('No se pudo obtener estado del proyecto.', 'clevers-shipping-for-multicouriers'),
+                'error' => is_array($data) && isset($data['error']) ? (string) $data['error'] : __('Could not get project status.', 'clevers-shipping-for-multicouriers'),
                 'project' => array(),
                 'correlation_id' => $correlation,
             );

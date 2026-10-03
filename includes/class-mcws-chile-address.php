@@ -50,7 +50,7 @@ class MCWS_Chile_Address
     public static function change_cl_labels(array $locale): array
     {
         $locale['CL']['state']['label'] = __('Region', 'clevers-shipping-for-multicouriers');
-        $locale['CL']['city']['label'] = __('Comuna', 'clevers-shipping-for-multicouriers');
+        $locale['CL']['city']['label'] = __('Commune', 'clevers-shipping-for-multicouriers');
 
         return $locale;
     }
@@ -84,7 +84,7 @@ class MCWS_Chile_Address
         $input_classes[] = 'wc-enhanced-select';
         $input_class = implode(' ', $input_classes);
 
-        $options = '<option value="">' . esc_html__('Selecciona una comuna...', 'clevers-shipping-for-multicouriers') . '</option>';
+        $options = '<option value="">' . esc_html__('Select a commune...', 'clevers-shipping-for-multicouriers') . '</option>';
         $communes = isset($cities_by_country[$current_state]) && is_array($cities_by_country[$current_state]) ? $cities_by_country[$current_state] : array();
 
         if (empty($communes)) {
@@ -112,7 +112,7 @@ class MCWS_Chile_Address
             '<p class="form-row %1$s" id="%2$s_field"><label for="%2$s">%3$s</label><span class="woocommerce-input-wrapper"><select name="%4$s" id="%2$s" class="%5$s">%6$s</select></span></p>',
             esc_attr(implode(' ', isset($args['class']) && is_array($args['class']) ? $args['class'] : array('form-row-wide'))),
             esc_attr($args['id']),
-            esc_html((string) ($args['label'] ?? __('Comuna', 'clevers-shipping-for-multicouriers'))),
+            esc_html((string) ($args['label'] ?? __('Commune', 'clevers-shipping-for-multicouriers'))),
             esc_attr($key),
             esc_attr($input_class),
             $options
@@ -130,7 +130,7 @@ class MCWS_Chile_Address
         $localize = array(
             'cities' => self::get_cities('CL'),
             'postalCodes' => self::get_postal_codes('CL'),
-            'placeholder' => __('Selecciona una comuna...', 'clevers-shipping-for-multicouriers'),
+            'placeholder' => __('Select a commune...', 'clevers-shipping-for-multicouriers'),
         );
 
         wp_enqueue_script(

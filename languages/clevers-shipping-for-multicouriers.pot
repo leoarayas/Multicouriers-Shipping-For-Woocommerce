@@ -1,0 +1,663 @@
+# Copyright (C) 2026 Multicouriers
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Clevers Shipping for Multicouriers 1.0.9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/clevers-shipping-for-multicouriers\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-14T18:51:14+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: clevers-shipping-for-multicouriers\n"
+
+#. Plugin Name of the plugin
+#: clevers-shipping-for-multicouriers.php
+msgid "Clevers Shipping for Multicouriers"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: clevers-shipping-for-multicouriers.php
+msgid "https://multicouriers.cl"
+msgstr ""
+
+#. Description of the plugin
+#: clevers-shipping-for-multicouriers.php
+msgid "Shipping for Chile with fixed rates by commune/region and premium dynamic quotes via Multicouriers API."
+msgstr ""
+
+#. Author of the plugin
+#: clevers-shipping-for-multicouriers.php
+msgid "Multicouriers"
+msgstr ""
+
+#: clevers-shipping-for-multicouriers.php:30
+msgid "Multicouriers requires WooCommerce to be active."
+msgstr ""
+
+#: clevers-shipping-for-multicouriers.php:186
+#: clevers-shipping-for-multicouriers.php:190
+#: clevers-shipping-for-multicouriers.php:208
+#: clevers-shipping-for-multicouriers.php:212
+msgid "MC Correlation"
+msgstr ""
+
+#: clevers-shipping-for-multicouriers.php:232
+#: clevers-shipping-for-multicouriers.php:251
+msgid "Multicouriers Correlation"
+msgstr ""
+
+#: clevers-shipping-for-multicouriers.php:240
+#: clevers-shipping-for-multicouriers.php:261
+msgid "Correlation ID:"
+msgstr ""
+
+#: includes/class-mcws-admin-correlation.php:128
+msgid "Correlation ID Timeline"
+msgstr ""
+
+#: includes/class-mcws-admin-correlation.php:130
+msgid "No correlated events in the current panel data."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:18
+#: includes/class-mcws-admin-diagnostics.php:61
+#: includes/class-mcws-admin-diagnostics.php:98
+#: includes/class-mcws-admin-diagnostics.php:158
+#: includes/class-mcws-admin-diagnostics.php:178
+#: includes/class-mcws-admin-diagnostics.php:217
+#: includes/class-mcws-admin-diagnostics.php:253
+#: includes/class-mcws-admin-diagnostics.php:272
+msgid "Unauthorized"
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:28
+msgid "Configure API URL and token in the premium method to run diagnostic."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:48
+msgid "Diagnostic executed successfully."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:51
+msgid "Diagnostic executed with errors. Check the panel."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:188
+msgid "Configure API URL and token before rotating."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:198
+msgid "Could not rotate token: "
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:208
+msgid "Token rotated and saved successfully."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:227
+msgid "Configure API URL and token before querying history."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:237
+msgid "Error querying history: "
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:244
+msgid "Rotation history updated."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:260
+msgid "Project status updated."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:262
+msgid "Could not update project status. Check API URL/token."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:282
+msgid "Configure API URL and token in the premium method to run test quote."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:328
+msgid "API quote received"
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:339
+msgid "Test quote executed successfully."
+msgstr ""
+
+#: includes/class-mcws-admin-diagnostics.php:342
+msgid "Test quote executed with errors. Check the result."
+msgstr ""
+
+#: includes/class-mcws-admin-form-handler.php:19
+#: includes/class-mcws-admin-form-handler.php:78
+#: includes/class-mcws-admin-form-handler.php:190
+msgid "Not authorized"
+msgstr ""
+
+#: includes/class-mcws-admin-form-handler.php:69
+msgid "Rates saved successfully."
+msgstr ""
+
+#. translators: 1: Number of imported rows, 2: Number of skipped rows.
+#: includes/class-mcws-admin-form-handler.php:174
+#, php-format
+msgid "Import completed. Rows loaded: %1$d. Rows skipped: %2$d."
+msgstr ""
+
+#: includes/class-mcws-admin-form-handler.php:198
+msgid "You must enter an API Key to activate Premium."
+msgstr ""
+
+#. translators: 1: Number of synced dynamic instances, 2: Number of created shipping methods in zones.
+#: includes/class-mcws-admin-form-handler.php:209
+#, php-format
+msgid "Premium activated. Synced instances: %1$d. Methods created automatically: %2$d."
+msgstr ""
+
+#: includes/class-mcws-admin-menu.php:16
+#: includes/class-mcws-admin-page-renderer.php:28
+msgid "Multicouriers Fixed Rates"
+msgstr ""
+
+#: includes/class-mcws-admin-menu.php:17
+msgid "Multicouriers Rates"
+msgstr ""
+
+#: includes/class-mcws-admin-menu.php:25
+#: includes/class-mcws-admin-menu.php:26
+#: includes/class-mcws-admin-page-renderer.php:120
+msgid "Multicouriers Premium"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:18
+#: includes/class-mcws-admin-page-renderer.php:73
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:29
+msgid "Define rates by region or commune. Commune has priority over region."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:30
+msgid "Select a region and define a rule: All (the whole region), Only (only the selected communes) or Excluding (the whole region except the selected communes)."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:38
+#: includes/class-mcws-chile-address.php:52
+msgid "Region"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:39
+msgid "Rule"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:40
+msgid "Communes"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:41
+msgid "Price CLP"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:42
+msgid "Action"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:50
+msgid "No saved rules. Add a row to start."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:54
+msgid "Add row"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:55
+msgid "Save rates"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:59
+msgid "Legacy importer"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:60
+msgid "Import rates from previous methods detected in the database."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:64
+msgid "Import from legacy plugins"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:83
+#: includes/class-mcws-admin-page-renderer.php:138
+msgid "Not configured"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:121
+msgid "Configure API URL and token. The advanced diagnostics is hidden by default."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:125
+msgid "Enable Multicouriers Premium"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:126
+msgid "Paste your Multicouriers API Key. The API URL is fixed and does not require changes."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:127
+msgid "This plugin connects to external Multicouriers services for quotes, diagnostics and (in admin) updates to Chile communes. Check the readme for details on the data sent."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:128
+msgid "Fixed API URL:"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:129
+msgid "API Key"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:131
+msgid "When activating, the plugin automatically syncs the key in the premium methods and enables the required configuration."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:132
+msgid "Activate Premium"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:137
+msgid "Store domain"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:138
+msgid "API URL"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:139
+msgid "API token"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:140
+msgid "API status"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:140
+msgid "Configured"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:140
+msgid "Pending configuration"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:148
+msgid "Hide advanced diagnostics"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:150
+msgid "Show advanced diagnostics"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:156
+msgid "Advanced diagnostics"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:163
+msgid "Search Correlation ID"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:165
+msgid "Filter"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:170
+msgid "Correlation filter active:"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:171
+msgid "Clear filter"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:183
+msgid "Project status"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:185
+msgid "Project ID"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:186
+msgid "Nombre"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:187
+msgid "Registered domain"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:188
+msgid "API usage"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:189
+msgid "Usage %"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:190
+msgid "Token expires"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:191
+msgid "Last updated"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:199
+msgid "Run API diagnostic"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:207
+msgid "Export diagnostic (JSON)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:215
+msgid "Export diagnostic (CSV)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:223
+msgid "Include live API checks"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:224
+msgid "Export health (JSON)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:232
+msgid "Refresh project status"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:240
+msgid "Rotate API token automatically"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:248
+msgid "Load rotation history"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:252
+msgid "Test quote"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:257
+msgid "Destination region"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:258
+msgid "Destination commune"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:259
+msgid "Destination postal code"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:260
+msgid "Weight (kg)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:262
+msgid "Run test quote"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:266
+msgid "Last test quote"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:268
+#: includes/class-mcws-admin-page-renderer.php:313
+msgid "Date"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:269
+msgid "Destination"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:270
+msgid "API result"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:271
+msgid "Rates received"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:272
+msgid "Estimated fallback (CLP)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:273
+#: includes/class-mcws-admin-page-renderer.php:316
+msgid "Message"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:274
+#: includes/class-mcws-admin-page-renderer.php:317
+msgid "Correlation ID"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:279
+msgid "Returned rates"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:300
+msgid "Payload (copy)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:304
+msgid "Response (copy)"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:310
+msgid "Last diagnostic"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:314
+msgid "API reachability"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:315
+msgid "HTTP Status"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:323
+msgid "Token rotation history"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:342
+msgid "Recent events"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:344
+msgid "No recent events."
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:386
+msgid "Select region"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:395
+msgid "All"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:396
+msgid "Only"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:397
+msgid "Excluding"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:403
+msgid "Select commune"
+msgstr ""
+
+#: includes/class-mcws-admin-page-renderer.php:431
+msgid "Delete"
+msgstr ""
+
+#. translators: 1: API usage percent, 2: API request count used, 3: API request limit.
+#: includes/class-mcws-admin-project-status.php:80
+#, php-format
+msgid "Multicouriers alert: API usage at %1$s%% (%2$d/%3$d). Check WooCommerce > Multicouriers Premium."
+msgstr ""
+
+#: includes/class-mcws-api-client.php:27
+msgid "Temporarily paused due to consecutive errors. Try again in a few minutes."
+msgstr ""
+
+#: includes/class-mcws-api-client.php:99
+msgid "Error consulting Multicouriers."
+msgstr ""
+
+#: includes/class-mcws-api-client.php:129
+msgid "It was not possible to quote at this time."
+msgstr ""
+
+#: includes/class-mcws-api-client.php:171
+msgid "Could not rotate token."
+msgstr ""
+
+#: includes/class-mcws-api-client.php:214
+msgid "Could not get rotation history."
+msgstr ""
+
+#: includes/class-mcws-api-client.php:261
+msgid "Could not get project status."
+msgstr ""
+
+#: includes/class-mcws-chile-address.php:53
+#: includes/class-mcws-chile-address.php:115
+msgid "Commune"
+msgstr ""
+
+#: includes/class-mcws-chile-address.php:87
+#: includes/class-mcws-chile-address.php:133
+msgid "Select a commune..."
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:13
+msgid "Multicouriers API (Premium)"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:14
+msgid "Dynamic courier quotes via Multicouriers API."
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:24
+#: includes/class-mcws-dynamic-method.php:69
+msgid "Shipping with couriers"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:62
+#: includes/class-mcws-fixed-rates-method.php:39
+msgid "Enabled"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:67
+#: includes/class-mcws-fixed-rates-method.php:44
+msgid "Title"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:72
+msgid "Origin commune"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:75
+msgid "Used in the quote request."
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:78
+msgid "Origin region"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:83
+msgid "Show only cheapest rate"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:88
+msgid "Enable quote cache"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:93
+msgid "Cache minutes"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:98
+msgid "Fallback to fixed rate if API fails"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:103
+msgid "Fallback title"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:105
+#: includes/class-mcws-dynamic-method.php:244
+msgid "Standard shipping"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:108
+msgid "Default fallback cost (CLP)"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:113
+msgid "Fallback minimum subtotal (CLP)"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:116
+msgid "0 = no restriction. If the cart has less than this subtotal, fallback is not applied."
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:119
+msgid "Allowed fallback categories"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:124
+msgid "If you define categories, fallback only applies when the cart contains at least one."
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:127
+msgid "Allowed fallback shipping classes"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:132
+msgid "If you define classes, fallback only applies when the cart contains at least one."
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:368
+msgid "Courier"
+msgstr ""
+
+#: includes/class-mcws-dynamic-method.php:369
+msgid "Service"
+msgstr ""
+
+#: includes/class-mcws-fixed-rates-method.php:13
+msgid "Multicouriers Fixed Rate"
+msgstr ""
+
+#: includes/class-mcws-fixed-rates-method.php:14
+msgid "Fixed rates per commune or region for Chile."
+msgstr ""
+
+#: includes/class-mcws-fixed-rates-method.php:24
+#: includes/class-mcws-fixed-rates-method.php:46
+msgid "Shipping by region/commune"
+msgstr ""
+
+#: includes/class-mcws-fixed-rates-method.php:49
+msgid "Default rate (CLP)"
+msgstr ""
+
+#: includes/class-mcws-fixed-rates-method.php:52
+msgid "Used only when there is no match in the rules defined in WooCommerce > Multicouriers Rates."
+msgstr ""

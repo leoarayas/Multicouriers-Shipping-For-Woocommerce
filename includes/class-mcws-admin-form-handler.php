@@ -16,7 +16,7 @@ class MCWS_Admin_Form_Handler
     public static function handle_save_fixed_rates(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Not authorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_save_fixed_rates');
@@ -66,7 +66,7 @@ class MCWS_Admin_Form_Handler
         update_option(MCWS_Admin::OPTION_FIXED_RATES_TABLE, $rows);
         MCWS_Logger::info('Tarifas fijas actualizadas', array('rows' => count($rows)));
 
-        MCWS_Admin_Page_Renderer::set_notice('success', __('Tarifas guardadas correctamente.', 'clevers-shipping-for-multicouriers'));
+        MCWS_Admin_Page_Renderer::set_notice('success', __('Rates saved successfully.', 'clevers-shipping-for-multicouriers'));
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-fixed-rates'));
         exit;
@@ -75,7 +75,7 @@ class MCWS_Admin_Form_Handler
     public static function handle_import_legacy_rates(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Not authorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_import_legacy_rates');
@@ -171,7 +171,7 @@ class MCWS_Admin_Form_Handler
 
         $msg = sprintf(
             /* translators: 1: Number of imported rows, 2: Number of skipped rows. */
-            __('Importacion completada. Filas cargadas: %1$d. Filas omitidas: %2$d.', 'clevers-shipping-for-multicouriers'),
+            __('Import completed. Rows loaded: %1$d. Rows skipped: %2$d.', 'clevers-shipping-for-multicouriers'),
             count($imported),
             $skipped
         );
@@ -187,7 +187,7 @@ class MCWS_Admin_Form_Handler
     public static function handle_activate_premium(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Not authorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_activate_premium');
@@ -195,7 +195,7 @@ class MCWS_Admin_Form_Handler
         $token = isset($_POST['mcws_api_token']) ? sanitize_text_field((string) wp_unslash($_POST['mcws_api_token'])) : '';
         $token = trim($token);
         if ($token === '') {
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Debes ingresar una API Key para activar Premium.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('You must enter an API Key to activate Premium.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -206,7 +206,7 @@ class MCWS_Admin_Form_Handler
 
         $message = sprintf(
             /* translators: 1: Number of synced dynamic instances, 2: Number of created shipping methods in zones. */
-            __('Premium activado. Instancias sincronizadas: %1$d. Metodos creados automaticamente: %2$d.', 'clevers-shipping-for-multicouriers'),
+            __('Premium activated. Synced instances: %1$d. Methods created automatically: %2$d.', 'clevers-shipping-for-multicouriers'),
             $synced_instances,
             $created_methods
         );
