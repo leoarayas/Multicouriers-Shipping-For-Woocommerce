@@ -2,7 +2,7 @@
     'use strict';
 
     function stateOptions(selectedValue) {
-        var html = '<option value="">Selecciona region</option>';
+        var html = '<option value="">Select region</option>';
         var states = (window.mcwsAdminRates && window.mcwsAdminRates.states) ? window.mcwsAdminRates.states : {};
 
         Object.keys(states).forEach(function (code) {
@@ -37,7 +37,7 @@
     }
 
     function communeOptions(regionCode, selectedValue) {
-        var html = '<option value="">Selecciona comuna</option>';
+        var html = '<option value="">Select commune</option>';
         getCitiesByRegion(regionCode).forEach(function (city) {
             var selected = city === selectedValue ? ' selected="selected"' : '';
             html += '<option value="' + escapeHtml(city) + '"' + selected + '>' + escapeHtml(city) + '</option>';
@@ -82,17 +82,17 @@
                 '<td><select name="mcws_region[]" class="mcws-region">' + stateOptions('') + '</select></td>' +
                 '<td>' +
                     '<select name="mcws_commune_mode[]" class="mcws-commune-mode">' +
-                        '<option value="all">Todas</option>' +
-                        '<option value="only" selected="selected">Solamente</option>' +
-                        '<option value="exclude">Excluyendo</option>' +
+                        '<option value="all">All</option>' +
+                        '<option value="only" selected="selected">Only</option>' +
+                        '<option value="exclude">Excluding</option>' +
                     '</select>' +
                 '</td>' +
                 '<td>' +
-                    '<select class="mcws-communes wc-enhanced-select" multiple="multiple"><option value="">Selecciona comuna</option></select>' +
+                    '<select class="mcws-communes wc-enhanced-select" multiple="multiple"><option value="">Select commune</option></select>' +
                     '<input type="hidden" name="mcws_communes_csv[]" class="mcws-communes-csv" value="" />' +
                 '</td>' +
                 '<td><input type="number" min="0" step="1" name="mcws_cost[]" value="" /></td>' +
-                '<td><button class="button-link-delete mcws-remove-row" type="button">Eliminar</button></td>' +
+                '<td><button class="button-link-delete mcws-remove-row" type="button">Delete</button></td>' +
             '</tr>';
     }
 
@@ -114,7 +114,7 @@
             }
             $el[initFn]({
                 width: '100%',
-                placeholder: 'Selecciona comunas',
+                placeholder: 'Select communes',
                 allowClear: true
             });
         });
@@ -133,7 +133,7 @@
             $(this).closest('tr').remove();
             if ($('#mcws-fixed-rates-table tbody .mcws-rate-row').length === 0) {
                 $('#mcws-fixed-rates-table tbody').append(
-                    '<tr class="mcws-empty-row"><td colspan="5">Sin reglas guardadas. Agrega una fila para comenzar.</td></tr>'
+                    '<tr class="mcws-empty-row"><td colspan="5">No saved rules. Add a row to start.</td></tr>'
                 );
             }
         });

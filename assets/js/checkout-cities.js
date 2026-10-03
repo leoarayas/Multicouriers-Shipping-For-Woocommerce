@@ -65,7 +65,7 @@
         var cities = getCitiesByState(stateCode);
         var placeholder = (window.mcws_city_params && window.mcws_city_params.placeholder)
             ? window.mcws_city_params.placeholder
-            : 'Selecciona una comuna...';
+            : 'Select a commune...';
 
         var options = '<option value="">' + placeholder + '</option>';
 

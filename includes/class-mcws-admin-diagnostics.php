@@ -15,7 +15,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_run_diagnostics(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_run_diagnostics');
@@ -25,7 +25,7 @@ class MCWS_Admin_Diagnostics
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configura API URL y token en el metodo premium para ejecutar diagnostico.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configure API URL and token in the premium method to run diagnostic.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -45,10 +45,10 @@ class MCWS_Admin_Diagnostics
 
         if (!empty($ping['ok'])) {
             MCWS_Logger::info('Diagnostico API exitoso', $diag);
-            MCWS_Admin_Page_Renderer::set_notice('success', __('Diagnostico ejecutado correctamente.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('success', __('Diagnostic executed successfully.', 'clevers-shipping-for-multicouriers'));
         } else {
             MCWS_Logger::warning('Diagnostico API con error', $diag);
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Diagnostico ejecutado con errores. Revisa el panel.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Diagnostic executed with errors. Check the panel.', 'clevers-shipping-for-multicouriers'));
         }
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
@@ -58,7 +58,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_export_diagnostics(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_export_diagnostics');
@@ -95,7 +95,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_export_diagnostics_csv(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_export_diagnostics_csv');
@@ -155,7 +155,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_export_health_snapshot(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_export_health_snapshot');
@@ -175,7 +175,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_rotate_token(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_rotate_token');
@@ -185,7 +185,7 @@ class MCWS_Admin_Diagnostics
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configura API URL y token antes de rotar.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configure API URL and token before rotating.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -195,7 +195,7 @@ class MCWS_Admin_Diagnostics
 
         if (empty($rotation['ok']) || empty($rotation['new_key'])) {
             MCWS_Logger::warning('Rotacion de token fallida', array('error' => $rotation['error'] ?? '', 'correlation_id' => $rotation['correlation_id'] ?? ''));
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('No se pudo rotar token: ', 'clevers-shipping-for-multicouriers') . (string) ($rotation['error'] ?? ''));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Could not rotate token: ', 'clevers-shipping-for-multicouriers') . (string) ($rotation['error'] ?? ''));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -205,7 +205,7 @@ class MCWS_Admin_Diagnostics
         MCWS_Admin_Settings::sync_dynamic_instances_credentials($new_token);
 
         MCWS_Logger::info('Token rotado correctamente', array('correlation_id' => $rotation['correlation_id'] ?? ''));
-        MCWS_Admin_Page_Renderer::set_notice('success', __('Token rotado y guardado correctamente.', 'clevers-shipping-for-multicouriers'));
+        MCWS_Admin_Page_Renderer::set_notice('success', __('Token rotated and saved successfully.', 'clevers-shipping-for-multicouriers'));
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
         exit;
@@ -214,7 +214,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_fetch_rotations(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_fetch_rotations');
@@ -224,7 +224,7 @@ class MCWS_Admin_Diagnostics
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configura API URL y token antes de consultar historial.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configure API URL and token before querying history.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -234,14 +234,14 @@ class MCWS_Admin_Diagnostics
 
         if (empty($rotations['ok'])) {
             MCWS_Logger::warning('No se pudo obtener historial de rotaciones', array('error' => $rotations['error'] ?? '', 'correlation_id' => $rotations['correlation_id'] ?? ''));
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Error consultando historial: ', 'clevers-shipping-for-multicouriers') . (string) ($rotations['error'] ?? ''));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Error querying history: ', 'clevers-shipping-for-multicouriers') . (string) ($rotations['error'] ?? ''));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
 
         set_transient('mcws_latest_rotations', $rotations['rotations'], 30 * MINUTE_IN_SECONDS);
         MCWS_Logger::info('Historial de rotaciones actualizado', array('count' => count($rotations['rotations']), 'correlation_id' => $rotations['correlation_id'] ?? ''));
-        MCWS_Admin_Page_Renderer::set_notice('success', __('Historial de rotaciones actualizado.', 'clevers-shipping-for-multicouriers'));
+        MCWS_Admin_Page_Renderer::set_notice('success', __('Rotation history updated.', 'clevers-shipping-for-multicouriers'));
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
         exit;
@@ -250,16 +250,16 @@ class MCWS_Admin_Diagnostics
     public static function handle_fetch_project_status(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_fetch_project_status');
 
         $ok = MCWS_Admin_Project_Status::refresh(false);
         if ($ok) {
-            MCWS_Admin_Page_Renderer::set_notice('success', __('Estado del proyecto actualizado.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('success', __('Project status updated.', 'clevers-shipping-for-multicouriers'));
         } else {
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('No se pudo actualizar estado del proyecto. Revisa API URL/token.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Could not update project status. Check API URL/token.', 'clevers-shipping-for-multicouriers'));
         }
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
@@ -269,7 +269,7 @@ class MCWS_Admin_Diagnostics
     public static function handle_test_quote(): void
     {
         if (!current_user_can('manage_woocommerce')) {
-            wp_die(esc_html__('No autorizado', 'clevers-shipping-for-multicouriers'));
+            wp_die(esc_html__('Unauthorized', 'clevers-shipping-for-multicouriers'));
         }
 
         check_admin_referer('mcws_test_quote');
@@ -279,7 +279,7 @@ class MCWS_Admin_Diagnostics
         $token = isset($settings['api_token']) ? (string) $settings['api_token'] : '';
 
         if ($api_url === '' || $token === '') {
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configura API URL y token en el metodo premium para ejecutar test quote.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Configure API URL and token in the premium method to run test quote.', 'clevers-shipping-for-multicouriers'));
             wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));
             exit;
         }
@@ -325,7 +325,7 @@ class MCWS_Admin_Diagnostics
             'api_result' => !empty($response['ok']) ? 'OK' : 'ERROR',
             'rates_count' => count($rates),
             'fallback_cost' => (string) $fallback_cost,
-            'message' => !empty($response['ok']) ? __('Cotizacion API recibida', 'clevers-shipping-for-multicouriers') : (string) ($response['error'] ?? ''),
+            'message' => !empty($response['ok']) ? __('API quote received', 'clevers-shipping-for-multicouriers') : (string) ($response['error'] ?? ''),
             'correlation_id' => (string) ($response['correlation_id'] ?? ''),
             'rates' => array_slice($rates, 0, 50),
             'payload' => $payload,
@@ -336,10 +336,10 @@ class MCWS_Admin_Diagnostics
 
         if (!empty($response['ok'])) {
             MCWS_Logger::info('Test quote ejecutado', $result);
-            MCWS_Admin_Page_Renderer::set_notice('success', __('Test quote ejecutado correctamente.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('success', __('Test quote executed successfully.', 'clevers-shipping-for-multicouriers'));
         } else {
             MCWS_Logger::warning('Test quote con error', $result);
-            MCWS_Admin_Page_Renderer::set_notice('warning', __('Test quote ejecutado con errores. Revisa el resultado.', 'clevers-shipping-for-multicouriers'));
+            MCWS_Admin_Page_Renderer::set_notice('warning', __('Test quote executed with errors. Check the result.', 'clevers-shipping-for-multicouriers'));
         }
 
         wp_safe_redirect(admin_url('admin.php?page=mcws-premium-status'));

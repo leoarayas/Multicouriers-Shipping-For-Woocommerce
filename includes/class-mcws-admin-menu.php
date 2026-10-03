@@ -13,8 +13,8 @@ class MCWS_Admin_Menu
     {
         add_submenu_page(
             'woocommerce',
-            __('Multicouriers Tarifas Fijas', 'clevers-shipping-for-multicouriers'),
-            __('Multicouriers Tarifas', 'clevers-shipping-for-multicouriers'),
+            __('Multicouriers Fixed Rates', 'clevers-shipping-for-multicouriers'),
+            __('Multicouriers Rates', 'clevers-shipping-for-multicouriers'),
             'manage_woocommerce',
             'mcws-fixed-rates',
             [MCWS_Admin_Page_Renderer::class, 'render_fixed_rates_page']

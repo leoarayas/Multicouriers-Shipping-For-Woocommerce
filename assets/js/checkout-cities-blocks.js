@@ -2,7 +2,7 @@
     'use strict';
 
     function getParams() {
-        return window.mcws_city_params || { cities: {}, postalCodes: {}, placeholder: 'Selecciona una comuna...' };
+        return window.mcws_city_params || { cities: {}, postalCodes: {}, placeholder: 'Select a commune...' };
     }
 
     function normalize(text) {
@@ -89,11 +89,11 @@
 
     function getPlaceholder() {
         var params = getParams();
-        return params.placeholder || 'Selecciona una comuna...';
+        return params.placeholder || 'Select a commune...';
     }
 
     function getRegionPlaceholder() {
-        return 'Selecciona una region primero...';
+        return 'Select a region first...';
     }
 
     function findCityInput(scope) {

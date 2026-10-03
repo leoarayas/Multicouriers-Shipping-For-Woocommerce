@@ -1,0 +1,473 @@
+# Copyright (C) 2026 Multicouriers
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Clevers Shipping for Multicouriers 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/clevers-shipping-for-multicouriers\n"
+"Language-Team: Español (neutro) <>
+"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-14T15:51:14+00:00\n"
+"PO-Revision-Date: 2026-09-14T16:00:00+00:00\n"
+"Language: es\n"
+"X-Generator: mcws-build-es\n"
+"X-Domain: clevers-shipping-for-multicouriers\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgid "Clevers Shipping for Multicouriers"
+msgstr ""
+
+msgid "https://multicouriers.cl"
+msgstr ""
+
+msgid "Shipping for Chile with fixed rates by commune/region and premium dynamic quotes via Multicouriers API."
+msgstr ""
+
+msgid "Multicouriers"
+msgstr "Multicouriers"
+
+msgid "Multicouriers requires WooCommerce to be active."
+msgstr "Multicouriers requiere que WooCommerce esté activo."
+
+msgid "MC Correlation"
+msgstr "MC Correlation"
+
+msgid "Multicouriers Correlation"
+msgstr "Multicouriers Correlation"
+
+msgid "Correlation ID:"
+msgstr "Correlation ID:"
+
+msgid "Correlation ID Timeline"
+msgstr "Línea de tiempo del Correlation ID"
+
+msgid "No correlated events in the current panel data."
+msgstr "No hay eventos correlacionados en los datos actuales del panel."
+
+msgid "Unauthorized"
+msgstr "No autorizado"
+
+msgid "Configure API URL and token in the premium method to run diagnostic."
+msgstr "Configura la URL de API y el token en el método premium para ejecutar el diagnóstico."
+
+msgid "Diagnostic executed successfully."
+msgstr "Diagnóstico ejecutado correctamente."
+
+msgid "Diagnostic executed with errors. Check the panel."
+msgstr "Diagnóstico ejecutado con errores. Revisa el panel."
+
+msgid "Configure API URL and token before rotating."
+msgstr "Configura la URL de API y el token antes de rotar."
+
+msgid "Could not rotate token: "
+msgstr "No se pudo rotar el token: "
+
+msgid "Token rotated and saved successfully."
+msgstr "Token rotado y guardado correctamente."
+
+msgid "Configure API URL and token before querying history."
+msgstr "Configura la URL de API y el token antes de consultar el historial."
+
+msgid "Error querying history: "
+msgstr "Error consultando el historial: "
+
+msgid "Rotation history updated."
+msgstr "Historial de rotaciones actualizado."
+
+msgid "Project status updated."
+msgstr "Estado del proyecto actualizado."
+
+msgid "Could not update project status. Check API URL/token."
+msgstr "No se pudo actualizar el estado del proyecto. Revisa la URL de API y el token."
+
+msgid "Configure API URL and token in the premium method to run test quote."
+msgstr "Configura la URL de API y el token en el método premium para ejecutar el test de cotización."
+
+msgid "API quote received"
+msgstr "Cotización API recibida"
+
+msgid "Test quote executed successfully."
+msgstr "Test de cotización ejecutado correctamente."
+
+msgid "Test quote executed with errors. Check the result."
+msgstr "Test de cotización ejecutado con errores. Revisa el resultado."
+
+msgid "Not authorized"
+msgstr "No autorizado"
+
+msgid "Rates saved successfully."
+msgstr "Tarifas guardadas correctamente."
+
+msgid "Import completed. Rows loaded: %1$d. Rows skipped: %2$d."
+msgstr "Importación completada. Filas cargadas: %1$d. Filas omitidas: %2$d."
+
+msgid "You must enter an API Key to activate Premium."
+msgstr "Debes ingresar una API Key para activar Premium."
+
+msgid "Premium activated. Synced instances: %1$d. Methods created automatically: %2$d."
+msgstr "Premium activado. Instancias sincronizadas: %1$d. Métodos creados automáticamente: %2$d."
+
+msgid "Multicouriers Fixed Rates"
+msgstr "Multicouriers Tarifas Fijas"
+
+msgid "Multicouriers Rates"
+msgstr "Multicouriers Tarifas"
+
+msgid "Multicouriers Premium"
+msgstr "Multicouriers Premium"
+
+msgid "You do not have permission to access this page."
+msgstr "No tienes permisos para acceder a esta página."
+
+msgid "Define rates by region or commune. Commune has priority over region."
+msgstr "Define tarifas por región o comuna. La comuna tiene prioridad sobre la región."
+
+msgid "Select a region and define a rule: All (the whole region), Only (only the selected communes) or Excluding (the whole region except the selected communes)."
+msgstr "Selecciona una región y define una regla: Todas (toda la región), Solamente (solo las comunas seleccionadas) o Excluyendo (toda la región excepto las comunas seleccionadas)."
+
+msgid "Region"
+msgstr "Región"
+
+msgid "Rule"
+msgstr "Regla"
+
+msgid "Communes"
+msgstr "Comunas"
+
+msgid "Price CLP"
+msgstr "Precio CLP"
+
+msgid "Action"
+msgstr "Acción"
+
+msgid "No saved rules. Add a row to start."
+msgstr "No hay reglas guardadas. Agrega una fila para comenzar."
+
+msgid "Add row"
+msgstr "Agregar fila"
+
+msgid "Save rates"
+msgstr "Guardar tarifas"
+
+msgid "Legacy importer"
+msgstr "Importador legacy"
+
+msgid "Import rates from previous methods detected in the database."
+msgstr "Importa tarifas desde métodos anteriores detectados en la base de datos."
+
+msgid "Import from legacy plugins"
+msgstr "Importar desde plugins antiguos"
+
+msgid "Not configured"
+msgstr "No configurado"
+
+msgid "Configure API URL and token. The advanced diagnostics is hidden by default."
+msgstr "Configura la URL de API y el token. El diagnóstico avanzado está oculto por defecto."
+
+msgid "Enable Multicouriers Premium"
+msgstr "Activar Multicouriers Premium"
+
+msgid "Paste your Multicouriers API Key. The API URL is fixed and does not require changes."
+msgstr "Pega tu API Key de Multicouriers. La URL de la API es fija y no requiere cambios."
+
+msgid "This plugin connects to external Multicouriers services for quotes, diagnostics and (in admin) updates to Chile communes. Check the readme for details on the data sent."
+msgstr "Este plugin se conecta a servicios externos de Multicouriers para cotizaciones, diagnóstico y (en admin) actualización de comunas de Chile. Revisa el readme para detalle de los datos enviados."
+
+msgid "Fixed API URL:"
+msgstr "URL de API fija:"
+
+msgid "API Key"
+msgstr "API Key"
+
+msgid "When activating, the plugin automatically syncs the key in the premium methods and enables the required configuration."
+msgstr "Al activar, el plugin sincroniza automáticamente la clave en los métodos premium y habilita la configuración necesaria."
+
+msgid "Activate Premium"
+msgstr "Activar Premium"
+
+msgid "Store domain"
+msgstr "Dominio de la tienda"
+
+msgid "API URL"
+msgstr "URL de API"
+
+msgid "API token"
+msgstr "Token de API"
+
+msgid "API status"
+msgstr "Estado de la API"
+
+msgid "Configured"
+msgstr "Configurada"
+
+msgid "Pending configuration"
+msgstr "Pendiente de configuración"
+
+msgid "Hide advanced diagnostics"
+msgstr "Ocultar diagnóstico avanzado"
+
+msgid "Show advanced diagnostics"
+msgstr "Mostrar diagnóstico avanzado"
+
+msgid "Advanced diagnostics"
+msgstr "Diagnóstico avanzado"
+
+msgid "Search Correlation ID"
+msgstr "Buscar Correlation ID"
+
+msgid "Filter"
+msgstr "Filtrar"
+
+msgid "Correlation filter active:"
+msgstr "Filtro de Correlation activo:"
+
+msgid "Clear filter"
+msgstr "Limpiar filtro"
+
+msgid "Project status"
+msgstr "Estado del proyecto"
+
+msgid "Project ID"
+msgstr "Project ID"
+
+msgid "Nombre"
+msgstr ""
+
+msgid "Registered domain"
+msgstr "Dominio registrado"
+
+msgid "API usage"
+msgstr "Consumo de API"
+
+msgid "Usage %"
+msgstr "Consumo %"
+
+msgid "Token expires"
+msgstr "Expira el token"
+
+msgid "Last updated"
+msgstr "Última actualización"
+
+msgid "Run API diagnostic"
+msgstr "Ejecutar diagnóstico de API"
+
+msgid "Export diagnostic (JSON)"
+msgstr "Exportar diagnóstico (JSON)"
+
+msgid "Export diagnostic (CSV)"
+msgstr "Exportar diagnóstico (CSV)"
+
+msgid "Include live API checks"
+msgstr "Incluir chequeos live de API"
+
+msgid "Export health (JSON)"
+msgstr "Exportar health (JSON)"
+
+msgid "Refresh project status"
+msgstr "Actualizar estado del proyecto"
+
+msgid "Rotate API token automatically"
+msgstr "Rotar token de API automáticamente"
+
+msgid "Load rotation history"
+msgstr "Cargar historial de rotaciones"
+
+msgid "Test quote"
+msgstr "Test de cotización"
+
+msgid "Destination region"
+msgstr "Región destino"
+
+msgid "Destination commune"
+msgstr "Comuna destino"
+
+msgid "Destination postal code"
+msgstr "Código postal destino"
+
+msgid "Weight (kg)"
+msgstr "Peso (kg)"
+
+msgid "Run test quote"
+msgstr "Ejecutar test de cotización"
+
+msgid "Last test quote"
+msgstr "Último test de cotización"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "Destination"
+msgstr "Destino"
+
+msgid "API result"
+msgstr "Resultado API"
+
+msgid "Rates received"
+msgstr "Tarifas recibidas"
+
+msgid "Estimated fallback (CLP)"
+msgstr "Fallback estimado (CLP)"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Correlation ID"
+msgstr "Correlation ID"
+
+msgid "Returned rates"
+msgstr "Tarifas devueltas"
+
+msgid "Payload (copy)"
+msgstr "Payload (copiar)"
+
+msgid "Response (copy)"
+msgstr "Response (copiar)"
+
+msgid "Last diagnostic"
+msgstr "Último diagnóstico"
+
+msgid "API reachability"
+msgstr "Reachability API"
+
+msgid "HTTP Status"
+msgstr "HTTP Status"
+
+msgid "Token rotation history"
+msgstr "Historial de rotaciones de token"
+
+msgid "Recent events"
+msgstr "Eventos recientes"
+
+msgid "No recent events."
+msgstr "Sin eventos recientes."
+
+msgid "Select region"
+msgstr "Selecciona región"
+
+msgid "All"
+msgstr "Todas"
+
+msgid "Only"
+msgstr "Solamente"
+
+msgid "Excluding"
+msgstr "Excluyendo"
+
+msgid "Select commune"
+msgstr "Selecciona comuna"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Multicouriers alert: API usage at %1$s%% (%2$d/%3$d). Check WooCommerce > Multicouriers Premium."
+msgstr "Alerta Multicouriers: consumo de API en %1$s%% (%2$d/%3$d). Revisa WooCommerce > Multicouriers Premium."
+
+msgid "Temporarily paused due to consecutive errors. Try again in a few minutes."
+msgstr "Temporalmente pausado por errores consecutivos. Reintenta en unos minutos."
+
+msgid "Error consulting Multicouriers."
+msgstr "Error al consultar Multicouriers."
+
+msgid "It was not possible to quote at this time."
+msgstr "No fue posible cotizar en este momento."
+
+msgid "Could not rotate token."
+msgstr "No se pudo rotar token."
+
+msgid "Could not get rotation history."
+msgstr "No se pudo obtener el historial de rotaciones."
+
+msgid "Could not get project status."
+msgstr "No se pudo obtener el estado del proyecto."
+
+msgid "Commune"
+msgstr "Comuna"
+
+msgid "Select a commune..."
+msgstr "Selecciona una comuna..."
+
+msgid "Multicouriers API (Premium)"
+msgstr "Multicouriers API (Premium)"
+
+msgid "Dynamic courier quotes via Multicouriers API."
+msgstr "Cotización dinámica de couriers vía API de Multicouriers."
+
+msgid "Shipping with couriers"
+msgstr "Envío con couriers"
+
+msgid "Enabled"
+msgstr "Activado"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Origin commune"
+msgstr "Comuna de origen"
+
+msgid "Used in the quote request."
+msgstr "Se usa en la solicitud de cotización."
+
+msgid "Origin region"
+msgstr "Región de origen"
+
+msgid "Show only cheapest rate"
+msgstr "Mostrar solo la tarifa más barata"
+
+msgid "Enable quote cache"
+msgstr "Activar caché de cotizaciones"
+
+msgid "Cache minutes"
+msgstr "Minutos de caché"
+
+msgid "Fallback to fixed rate if API fails"
+msgstr "Fallback a tarifa fija si falla la API"
+
+msgid "Fallback title"
+msgstr "Título del fallback"
+
+msgid "Standard shipping"
+msgstr "Envío estándar"
+
+msgid "Default fallback cost (CLP)"
+msgstr "Costo de fallback por defecto (CLP)"
+
+msgid "Fallback minimum subtotal (CLP)"
+msgstr "Subtotal mínimo para fallback (CLP)"
+
+msgid "0 = no restriction. If the cart has less than this subtotal, fallback is not applied."
+msgstr "0 = sin restricción. Si el carrito tiene menos de este subtotal, el fallback no se aplica."
+
+msgid "Allowed fallback categories"
+msgstr "Categorías permitidas para fallback"
+
+msgid "If you define categories, fallback only applies when the cart contains at least one."
+msgstr "Si defines categorías, el fallback solo se aplica cuando el carrito contiene al menos una."
+
+msgid "Allowed fallback shipping classes"
+msgstr "Clases de envío permitidas para fallback"
+
+msgid "If you define classes, fallback only applies when the cart contains at least one."
+msgstr "Si defines clases, el fallback solo se aplica cuando el carrito contiene al menos una."
+
+msgid "Courier"
+msgstr "Courier"
+
+msgid "Service"
+msgstr "Servicio"
+
+msgid "Multicouriers Fixed Rate"
+msgstr "Multicouriers Tarifa Fija"
+
+msgid "Fixed rates per commune or region for Chile."
+msgstr "Tarifas fijas por comuna o región para Chile."
+
+msgid "Shipping by region/commune"
+msgstr "Envío por región/comuna"
+
+msgid "Default rate (CLP)"
+msgstr "Tarifa por defecto (CLP)"
+
+msgid "Used only when there is no match in the rules defined in WooCommerce > Multicouriers Rates."
+msgstr "Se usa solo cuando no hay coincidencia en las reglas definidas en WooCommerce > Multicouriers Tarifas."
+

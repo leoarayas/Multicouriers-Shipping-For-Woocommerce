@@ -3,7 +3,7 @@
  * Plugin Name: Clevers Shipping for Multicouriers
  * Plugin URI: https://multicouriers.cl
  * Description: Shipping for Chile with fixed rates by commune/region and premium dynamic quotes via Multicouriers API.
- * Version: 1.0.8
+ * Version: 1.1.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
@@ -27,7 +27,7 @@ if (!function_exists('is_plugin_active')) {
 
 if (!is_plugin_active('woocommerce/woocommerce.php')) {
     add_action('admin_notices', static function (): void {
-        echo '<div class="notice notice-error"><p>' . esc_html__('Multicouriers requiere que WooCommerce este activo.', 'clevers-shipping-for-multicouriers') . '</p></div>';
+        echo '<div class="notice notice-error"><p>' . esc_html__('Multicouriers requires WooCommerce to be active.', 'clevers-shipping-for-multicouriers') . '</p></div>';
     });
     return;
 }
@@ -45,7 +45,7 @@ if (!defined('MCWS_PLUGIN_URL')) {
 }
 
 if (!defined('MCWS_VERSION')) {
-    define('MCWS_VERSION', '1.0.8');
+    define('MCWS_VERSION', '1.1.0');
 }
 
 if (!defined('MCWS_API_BASE_URL')) {

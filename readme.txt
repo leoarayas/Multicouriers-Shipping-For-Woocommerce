@@ -4,7 +4,7 @@ Tags: shipping, chile, woocommerce, checkout blocks
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.8
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,16 @@ For the Chile cities dataset endpoint, the plugin performs a read-only request a
 3. Shipping method configuration inside WooCommerce shipping zones
 
 == Changelog ==
+
+= 1.1.0 =
+* i18n: Rewrite all translatable strings in PHP and JS to English so the plugin is fully translatable from `translate.wordpress.org`.
+* i18n: Regenerate `languages/clevers-shipping-for-multicouriers.pot` (153 strings).
+* i18n: Add initial Spanish (neutral) translation `languages/clevers-shipping-for-multicouriers-es.po` + `.mo` so all Spanish-speaking users see the UI in Spanish out of the box. Serves es_CL, es_ES, es_MX, es_AR, and any other Spanish locale via WordPress fallback.
+
+= 1.0.9 =
+* i18n: Add `languages/clevers-shipping-for-multicouriers.pot` so the plugin is translatable via translate.wordpress.org.
+* i18n: Confirm `Text Domain: clevers-shipping-for-multicouriers` and `Domain Path: /languages/` headers.
+* Docs: Open translation contributions at translate.wordpress.org/projects/wp-plugins/clevers-shipping-for-multicouriers.
 
 = 1.0.8 =
 * Fix: Reorder display name and slug per reviewer feedback. Display name no longer begins with a third-party trademark; slug is `clevers-shipping-for-multicouriers`.

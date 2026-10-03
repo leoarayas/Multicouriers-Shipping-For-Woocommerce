@@ -77,7 +77,7 @@ class MCWS_Admin_Project_Status
         $limit = isset($project['usage_limit']) ? (int) $project['usage_limit'] : 0;
         $message = sprintf(
             /* translators: 1: API usage percent, 2: API request count used, 3: API request limit. */
-            __('Alerta Multicouriers: consumo API en %1$s%% (%2$d/%3$d). Revisa WooCommerce > Multicouriers Premium.', 'clevers-shipping-for-multicouriers'),
+            __('Multicouriers alert: API usage at %1$s%% (%2$d/%3$d). Check WooCommerce > Multicouriers Premium.', 'clevers-shipping-for-multicouriers'),
             number_format($percent, 2, '.', ''),
             $count,
             $limit

@@ -125,9 +125,9 @@ class MCWS_Admin_Correlation
 
     public static function render_correlation_timeline(string $correlation_id, array $timeline): void
     {
-        echo '<h2>' . esc_html__('Timeline de Correlation ID', 'clevers-shipping-for-multicouriers') . '</h2>';
+        echo '<h2>' . esc_html__('Correlation ID Timeline', 'clevers-shipping-for-multicouriers') . '</h2>';
         if (empty($timeline)) {
-            echo '<p>' . esc_html__('No hay eventos correlacionados en los datos actuales del panel.', 'clevers-shipping-for-multicouriers') . '</p>';
+            echo '<p>' . esc_html__('No correlated events in the current panel data.', 'clevers-shipping-for-multicouriers') . '</p>';
             return;
         }
 
