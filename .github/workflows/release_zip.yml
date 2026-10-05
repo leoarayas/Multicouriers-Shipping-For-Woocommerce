@@ -117,9 +117,12 @@ jobs:
           cat "${PLUGIN_SLUG}-${{ steps.ver.outputs.version }}.zip.sha256"
 
       - name: Attach ZIP to GitHub Release
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || startsWith(inputs.ref, 'v')
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ env.BUILD_ROOT }}/dist/*.zip
+          tag_name: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.ref }}
+          files: |
+            ${{ env.BUILD_ROOT }}/dist/*.zip
+            ${{ env.BUILD_ROOT }}/dist/*.zip.sha256
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -25,10 +25,26 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event_name == 'workflow_dispatch' && inputs.ref || github.ref }}
 
+      - name: Determine SVN version
+        id: ver
+        shell: bash
+        run: |
+          RAW="${{ github.event_name == 'workflow_dispatch' && inputs.ref || github.ref }}"
+          VERSION="${RAW#refs/tags/}"
+          VERSION="${VERSION#refs/heads/}"
+          VERSION="${VERSION#v}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Could not determine a valid X.Y.Z version from '$RAW' (got '$VERSION'). Pass a tag ref like v1.1.1."
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Deploying version $VERSION"
+
       - name: Deploy plugin to WordPress.org (SVN)
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
           SLUG: clevers-shipping-for-multicouriers
+          VERSION: ${{ steps.ver.outputs.version }}
           SVN_USERNAME: ${{ secrets.WORDPRESS_ORG_USERNAME }}
           SVN_PASSWORD: ${{ secrets.WORDPRESS_ORG_PASSWORD }}
         with:
