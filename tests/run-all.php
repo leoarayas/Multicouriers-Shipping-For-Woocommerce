@@ -11,6 +11,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 $test_files = array(
     __DIR__ . '/postcode-resolution-test.php',
+    __DIR__ . '/postcode-api-hydration-test.php',
     __DIR__ . '/utils-test.php',
     __DIR__ . '/uninstall-test.php',
     __DIR__ . '/api-client-signature-test.php',

@@ -464,6 +464,13 @@ class MCWS_Chile_Address
                     'name' => $city_name,
                     'postal_code' => $postal_code,
                 );
+
+                // Populate the postal code lookup used by resolve_postal_code().
+                // Without this, the API payload only filled $cities and the
+                // postal code never reached the checkout/order.
+                if ($postal_code !== '') {
+                    self::$postal_codes['CL'][$region][self::normalize_city_key($city_name)] = $postal_code;
+                }
             }
         }
     }
