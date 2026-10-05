@@ -53,7 +53,7 @@ class MCWS_Admin
         add_action('admin_init', [MCWS_Admin_Project_Status::class, 'maybe_refresh_project_status']);
         add_action('admin_notices', [MCWS_Admin_Page_Renderer::class, 'render_usage_alert_notice']);
 
-        MCWS_Admin_REST::register_routes();
+        add_action('rest_api_init', [MCWS_Admin_REST::class, 'register_routes']);
     }
 
     /**
