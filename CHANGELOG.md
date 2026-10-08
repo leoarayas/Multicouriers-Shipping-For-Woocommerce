@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.3] - 2026-10-08
+
+### Fixed
+- Postcode was still left blank on stores running `<!-- wp:woocommerce/checkout -->`. The Blocks Store API never invokes the legacy `woocommerce_checkout_posted_data` filter, so two new hooks were added: `woocommerce_store_api_checkout_update_customer_from_request` rewrites the request payload (billing + shipping) before the customer is persisted, and `woocommerce_store_api_checkout_order_processed` is a defensive backstop that resolves and persists any still-missing postcode on the resulting `WC_Order`.
+- `assets/js/checkout-cities-blocks.js`: `findCityInput()` now also matches `<select>` (Blocks-native commune field) and `ensureCitySelect()` no longer hides or duplicates the Blocks-native select, so React state stays in sync with the resolved commune and the postcode makes it into the Store API payload.
+
 ## [1.1.2] - 2026-10-05
 
 ### Fixed

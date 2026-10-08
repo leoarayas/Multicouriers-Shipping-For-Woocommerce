@@ -21,6 +21,11 @@ class MCWS_Chile_Address
         add_action('woocommerce_checkout_update_order_review', array(__CLASS__, 'update_customer_postcodes_from_review'), 10, 1);
         add_action('woocommerce_checkout_create_order', array(__CLASS__, 'ensure_order_postcodes'), 20, 2);
         add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_scripts'));
+        // WooCommerce Blocks Store API: same hooks as the classic checkout so the
+        // postcode lookup runs whether the merchant uses the legacy shortcode
+        // or the `wp:woocommerce/checkout` Gutenberg block.
+        add_filter('woocommerce_store_api_checkout_update_customer_from_request', array(__CLASS__, 'normalize_blocks_checkout_postcodes'), 10, 2);
+        add_action('woocommerce_store_api_checkout_order_processed', array(__CLASS__, 'ensure_blocks_order_postcodes'), 20, 1);
     }
 
     public static function load_states(array $states): array
@@ -518,5 +523,111 @@ class MCWS_Chile_Address
         $city = isset($data[$scope . '_city']) ? (string) $data[$scope . '_city'] : '';
 
         return self::resolve_postal_code($state, $city, $country);
+    }
+
+    /**
+     * Blocks Store API hook (matches the legacy `woocommerce_checkout_posted_data`).
+     *
+     * WooCommerce Blocks processes checkout through `WC_Store_API` and never
+     * invokes the legacy filter, so the postcode was left blank for stores
+     * running `<!-- wp:woocommerce/checkout -->`. We rewrite the request payload
+     * in-place here so both the customer session and the subsequent order pick
+     * up the resolved postal code.
+     *
+     * @param \WP_REST_Request $request
+     * @param \WC_Customer     $customer
+     * @return \WP_REST_Request
+     */
+    public static function normalize_blocks_checkout_postcodes($request, $customer)
+    {
+        if (!is_a($request, 'WP_REST_Request') || !is_a($customer, 'WC_Customer')) {
+            return $request;
+        }
+
+        $params = $request->get_json_params();
+        if (!is_array($params) || empty($params)) {
+            return $request;
+        }
+
+        $address_keys = array('billing_address', 'shipping_address');
+        foreach ($address_keys as $address_key) {
+            if (!isset($params[$address_key]) || !is_array($params[$address_key])) {
+                continue;
+            }
+
+            $address = $params[$address_key];
+            $country = isset($address['country']) ? (string) $address['country'] : 'CL';
+            if (strtoupper($country) !== 'CL') {
+                continue;
+            }
+
+            $postcode = isset($address['postcode']) ? trim((string) $address['postcode']) : '';
+            if ($postcode !== '') {
+                continue;
+            }
+
+            $state = isset($address['state']) ? (string) $address['state'] : '';
+            $city = isset($address['city']) ? (string) $address['city'] : '';
+            $resolved = self::resolve_postal_code($state, $city, $country);
+            if ($resolved === '') {
+                continue;
+            }
+
+            $params[$address_key]['postcode'] = $resolved;
+        }
+
+        $request->set_body(wp_json_encode($params));
+
+        return $request;
+    }
+
+    /**
+     * Blocks Store API hook (matches the legacy `woocommerce_checkout_create_order`).
+     *
+     * Defensive backstop for the Blocks flow: if the postcode is still empty on
+     * the order when `woocommerce_store_api_checkout_order_processed` fires
+     * (custom additional fields, third-party gateways, slow JS, etc.), resolve
+     * it from the commune/region lookup and persist it before WooCommerce
+     * finalises the order.
+     *
+     * @param \WC_Order $order
+     */
+    public static function ensure_blocks_order_postcodes($order)
+    {
+        if (!is_a($order, 'WC_Order')) {
+            return;
+        }
+
+        $billing_country = (string) $order->get_billing_country();
+        $billing_postcode = (string) $order->get_billing_postcode();
+        if ($billing_postcode === '') {
+            $resolved = self::resolve_postal_code(
+                (string) $order->get_billing_state(),
+                (string) $order->get_billing_city(),
+                $billing_country
+            );
+            if ($resolved !== '') {
+                $order->set_billing_postcode($resolved);
+                $order->update_meta_data('_mcws_billing_postcode_auto', $resolved);
+            }
+        }
+
+        $shipping_country = (string) $order->get_shipping_country();
+        $shipping_city = (string) $order->get_shipping_city();
+        $shipping_state = (string) $order->get_shipping_state();
+        $shipping_postcode = (string) $order->get_shipping_postcode();
+        if ($shipping_postcode === '' && $shipping_city !== '') {
+            $resolved_shipping = self::resolve_postal_code(
+                $shipping_state,
+                $shipping_city,
+                $shipping_country !== '' ? $shipping_country : 'CL'
+            );
+            if ($resolved_shipping !== '') {
+                $order->set_shipping_postcode($resolved_shipping);
+                $order->update_meta_data('_mcws_shipping_postcode_auto', $resolved_shipping);
+            }
+        }
+
+        $order->save();
     }
 }

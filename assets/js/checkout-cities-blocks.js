@@ -97,7 +97,11 @@
     }
 
     function findCityInput(scope) {
-        return findField(scope, 'city', 'input');
+        // WooCommerce Blocks renders the city field as a <select>, while the
+        // legacy shortcode still ships a text <input>. Support both so the
+        // postcode lookup binds regardless of the active checkout experience.
+        return findField(scope, 'city', 'input') ||
+            findField(scope, 'city', 'select');
     }
 
     function findCitySelect(scope) {
@@ -166,6 +170,14 @@
         }
 
         cityInput.dataset.mcwsScope = scope;
+
+        // WooCommerce Blocks ships a native <select> for the city. Reuse it
+        // instead of creating a parallel dropdown — hiding the Blocks-native
+        // select breaks React state sync and the order never receives the
+        // postcode we set on the hidden input.
+        if (cityInput.tagName === 'SELECT') {
+            return cityInput;
+        }
 
         var existing = findCitySelect(scope);
         if (existing && existing.dataset.mcwsNativeInputId === (cityInput.id || '')) {
@@ -274,7 +286,11 @@
 
         var lastValue = citySelect.dataset.mcwsLastValue || '';
 
-        hideNativeCityInput(cityInput);
+        // Only hide the legacy text <input>. The Blocks-native <select> must stay
+        // visible and reactive so React captures the selected commune.
+        if (cityInput.tagName !== 'SELECT') {
+            hideNativeCityInput(cityInput);
+        }
 
         var stateCode = String(stateField.value || '');
         var cities = stateCode ? getCitiesForState(stateCode) : [];
