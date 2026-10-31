@@ -92,6 +92,7 @@
                     '<input type="hidden" name="mcws_communes_csv[]" class="mcws-communes-csv" value="" />' +
                 '</td>' +
                 '<td><input type="number" min="0" step="1" name="mcws_cost[]" value="" /></td>' +
+                '<td><input type="number" min="0" step="1" name="mcws_min_amount[]" value="" placeholder="e.g. 50000" /></td>' +
                 '<td><button class="button-link-delete mcws-remove-row" type="button">Delete</button></td>' +
             '</tr>';
     }
@@ -133,7 +134,7 @@
             $(this).closest('tr').remove();
             if ($('#mcws-fixed-rates-table tbody .mcws-rate-row').length === 0) {
                 $('#mcws-fixed-rates-table tbody').append(
-                    '<tr class="mcws-empty-row"><td colspan="5">No saved rules. Add a row to start.</td></tr>'
+                    '<tr class="mcws-empty-row"><td colspan="6">No saved rules. Add a row to start.</td></tr>'
                 );
             }
         });

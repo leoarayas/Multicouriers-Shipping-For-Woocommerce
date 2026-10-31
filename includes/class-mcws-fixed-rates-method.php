@@ -45,6 +45,12 @@ class MCWS_Fixed_Rates_Method extends WC_Shipping_Method
                 'type' => 'text',
                 'default' => __('Shipping by region/commune', 'clevers-shipping-for-multicouriers'),
             ),
+            'free_shipping_title' => array(
+                'title' => __('Free Shipping Title', 'clevers-shipping-for-multicouriers'),
+                'type' => 'text',
+                'default' => __('Free shipping', 'clevers-shipping-for-multicouriers'),
+                'description' => __('Label displayed when an order qualifies for free shipping based on rule thresholds.', 'clevers-shipping-for-multicouriers'),
+            ),
             'default_cost' => array(
                 'title' => __('Default rate (CLP)', 'clevers-shipping-for-multicouriers'),
                 'type' => 'price',
@@ -63,10 +69,22 @@ class MCWS_Fixed_Rates_Method extends WC_Shipping_Method
         $default_cost = (float) $this->get_option('default_cost', '0');
         $global_rows = $this->get_global_rates_rows();
 
+        $subtotal = 0.0;
+        if (isset($package['contents_cost'])) {
+            $subtotal = (float) $package['contents_cost'];
+        } elseif (function_exists('WC') && WC()->cart) {
+            $subtotal = (float) WC()->cart->get_displayed_subtotal();
+        }
+
+        $label = $this->title;
+        $is_free = false;
+
         // If the new global fixed-rates table has rows, use it as the source of truth.
         // This preserves advanced modes like "exclude" that legacy instance textareas cannot represent.
         if (!empty($global_rows) && class_exists('MCWS_Fallback_Rates')) {
-            $cost = MCWS_Fallback_Rates::resolve_cost($destination, $default_cost);
+            $rate_result = MCWS_Fallback_Rates::resolve_rate($destination, $default_cost, $subtotal);
+            $cost = $rate_result['cost'];
+            $is_free = !empty($rate_result['is_free']);
         } else {
             $commune_rates = $this->parse_rates_map((string) $this->get_option('commune_rates', ''));
             $region_rates = $this->parse_rates_map((string) $this->get_option('region_rates', ''));
@@ -85,9 +103,16 @@ class MCWS_Fixed_Rates_Method extends WC_Shipping_Method
             }
         }
 
+        if ($is_free) {
+            $free_shipping_title = trim((string) $this->get_option('free_shipping_title', ''));
+            if ($free_shipping_title !== '') {
+                $label = $free_shipping_title;
+            }
+        }
+
         $this->add_rate(array(
             'id' => $this->id . ':' . $this->instance_id,
-            'label' => $this->title,
+            'label' => $label,
             'cost' => $cost,
             'calc_tax' => 'per_order',
         ));

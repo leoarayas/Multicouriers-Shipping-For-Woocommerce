@@ -25,9 +25,10 @@ class MCWS_Admin_Form_Handler
         $commune_modes = isset($_POST['mcws_commune_mode']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['mcws_commune_mode'])) : array();
         $communes_csv = isset($_POST['mcws_communes_csv']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['mcws_communes_csv'])) : array();
         $costs = isset($_POST['mcws_cost']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['mcws_cost'])) : array();
+        $min_amounts = isset($_POST['mcws_min_amount']) ? array_map('sanitize_text_field', (array) wp_unslash($_POST['mcws_min_amount'])) : array();
 
         $rows = array();
-        $size = max(count($regions), count($commune_modes), count($communes_csv), count($costs));
+        $size = max(count($regions), count($commune_modes), count($communes_csv), count($costs), count($min_amounts));
 
         for ($i = 0; $i < $size; $i++) {
             $region = isset($regions[$i]) ? sanitize_text_field((string) $regions[$i]) : '';
@@ -35,6 +36,7 @@ class MCWS_Admin_Form_Handler
             $communes_raw = isset($communes_csv[$i]) ? (string) $communes_csv[$i] : '';
             $communes_list = array_values(array_unique(array_filter(array_map('sanitize_text_field', array_map('trim', explode(',', $communes_raw))))));
             $cost = isset($costs[$i]) ? sanitize_text_field((string) $costs[$i]) : '';
+            $min_amount_raw = isset($min_amounts[$i]) ? sanitize_text_field((string) $min_amounts[$i]) : '';
 
             if ($cost === '' || !is_numeric($cost)) {
                 continue;
@@ -53,7 +55,7 @@ class MCWS_Admin_Form_Handler
 
             $first_commune = !empty($communes_list) ? (string) $communes_list[0] : '';
             $scope = $commune_mode === 'all' ? 'region' : 'commune';
-            $rows[] = array(
+            $row_data = array(
                 'scope' => $scope,
                 'region' => $region,
                 'commune_mode' => $commune_mode,
@@ -61,6 +63,12 @@ class MCWS_Admin_Form_Handler
                 'commune' => $first_commune,
                 'cost' => (string) (int) round((float) $cost),
             );
+
+            if ($min_amount_raw !== '' && is_numeric($min_amount_raw) && (float) $min_amount_raw > 0) {
+                $row_data['min_amount'] = (string) (int) round((float) $min_amount_raw);
+            }
+
+            $rows[] = $row_data;
         }
 
         update_option(MCWS_Admin::OPTION_FIXED_RATES_TABLE, $rows);

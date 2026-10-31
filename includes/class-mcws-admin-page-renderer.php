@@ -38,7 +38,8 @@ class MCWS_Admin_Page_Renderer
         echo '<th style="width: 220px;">' . esc_html__('Region', 'clevers-shipping-for-multicouriers') . '</th>';
         echo '<th style="width: 160px;">' . esc_html__('Rule', 'clevers-shipping-for-multicouriers') . '</th>';
         echo '<th>' . esc_html__('Communes', 'clevers-shipping-for-multicouriers') . '</th>';
-        echo '<th style="width: 180px;">' . esc_html__('Price CLP', 'clevers-shipping-for-multicouriers') . '</th>';
+        echo '<th style="width: 160px;">' . esc_html__('Price CLP', 'clevers-shipping-for-multicouriers') . '</th>';
+        echo '<th style="width: 180px;">' . esc_html__('Free over CLP (optional)', 'clevers-shipping-for-multicouriers') . '</th>';
         echo '<th style="width: 90px;">' . esc_html__('Action', 'clevers-shipping-for-multicouriers') . '</th>';
         echo '</tr></thead><tbody>';
 
@@ -47,7 +48,7 @@ class MCWS_Admin_Page_Renderer
                 self::render_row($row, $states, is_array($cities) ? $cities : array());
             }
         } else {
-            echo '<tr class="mcws-empty-row"><td colspan="5">' . esc_html__('No saved rules. Add a row to start.', 'clevers-shipping-for-multicouriers') . '</td></tr>';
+            echo '<tr class="mcws-empty-row"><td colspan="6">' . esc_html__('No saved rules. Add a row to start.', 'clevers-shipping-for-multicouriers') . '</td></tr>';
         }
 
         echo '</tbody></table>';
@@ -379,6 +380,7 @@ class MCWS_Admin_Page_Renderer
         }
         $communes_csv = implode(',', $communes_list);
         $cost = isset($row['cost']) ? (string) $row['cost'] : '';
+        $min_amount = isset($row['min_amount']) && is_numeric($row['min_amount']) ? (string) $row['min_amount'] : '';
 
         echo '<tr class="mcws-rate-row">';
         echo '<td>';
@@ -428,6 +430,7 @@ class MCWS_Admin_Page_Renderer
         echo '<input type="hidden" name="mcws_communes_csv[]" class="mcws-communes-csv" value="' . esc_attr($communes_csv) . '" />';
         echo '</td>';
         echo '<td><input type="number" min="0" step="1" name="mcws_cost[]" value="' . esc_attr($cost) . '" /></td>';
+        echo '<td><input type="number" min="0" step="1" name="mcws_min_amount[]" value="' . esc_attr($min_amount) . '" placeholder="' . esc_attr__('e.g. 50000', 'clevers-shipping-for-multicouriers') . '" /></td>';
         echo '<td><button class="button-link-delete mcws-remove-row" type="button">' . esc_html__('Delete', 'clevers-shipping-for-multicouriers') . '</button></td>';
         echo '</tr>';
     }
