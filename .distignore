@@ -14,6 +14,7 @@ composer.json
 composer.lock
 phpcs.xml*
 phpunit.xml*
+phpstan*
 .phpunit.result.cache
 *.lock
 *.log

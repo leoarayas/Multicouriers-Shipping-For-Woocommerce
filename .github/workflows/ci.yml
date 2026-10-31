@@ -29,8 +29,35 @@ jobs:
           tools: composer
           coverage: none
 
-      - name: Run test suite
-        run: php tests/run-all.php
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHPUnit test suite
+        run: composer test
+
+      - name: Run legacy test suite
+        run: composer run test:legacy
+
+  phpstan:
+    name: PHPStan Static Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHPStan
+        run: composer run phpstan
 
   i18n:
     name: i18n Lint
@@ -54,9 +81,7 @@ jobs:
           DOMAIN="clevers-shipping-for-multicouriers"
           ERRORS=0
 
-          # Check that all translatable strings use the correct text domain
           while IFS= read -r -d '' file; do
-            # Find __() and esc_html__() calls without correct domain
             while IFS= read -r line; do
               if echo "$line" | grep -qE "(__|esc_html__|esc_attr__|_e|esc_html_e|esc_attr_e)\(" ; then
                 if echo "$line" | grep -qE "'$DOMAIN'" ; then
@@ -65,11 +90,9 @@ jobs:
                 if echo "$line" | grep -qE "\"$DOMAIN\"" ; then
                   continue
                 fi
-                # Skip lines that are comments or don't have string calls
                 if echo "$line" | grep -qE "^\s*//" ; then
                   continue
                 fi
-                # This line has a translatable string without the correct domain
                 echo "WARNING: Possible missing text domain in: $file"
                 echo "  $line"
                 ERRORS=$((ERRORS + 1))
@@ -91,15 +114,11 @@ jobs:
           echo "Checking for common untranslated patterns..."
           DOMAIN="clevers-shipping-for-multicouriers"
 
-          # Look for hardcoded user-facing strings that should be translated
-          # This is a heuristic check - manual review still needed
           while IFS= read -r -d '' file; do
-            # Skip test files and this workflow
             if echo "$file" | grep -qE "tests/|\.github/" ; then
               continue
             fi
 
-            # Check for echo/print with hardcoded strings (potential i18n candidates)
             if grep -n "echo\s*['\"]" "$file" 2>/dev/null | grep -v "esc_html__\|esc_attr__\|__\|_e\|//\|#" | head -5 ; then
               echo "  ↑ Potential untranslated strings in: $file"
             fi

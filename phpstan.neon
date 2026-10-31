@@ -1,0 +1,13 @@
+parameters:
+    level: 3
+    paths:
+        - includes
+    treatPhpDocTypesAsCertain: false
+    bootstrapFiles:
+        - tests/bootstrap.php
+        - tests/phpstan-stubs.php
+    ignoreErrors:
+        -
+            identifier: function.notFound
+        -
+            identifier: class.notFound

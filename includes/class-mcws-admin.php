@@ -1,11 +1,12 @@
 <?php
-
-if (!defined('ABSPATH')) {
-    exit;
-}
-
 /**
- * Coordinator for the admin UI.
+ * Backwards-compatible admin façade for Multicouriers Shipping for WooCommerce.
+ *
+ * Historically all admin functionality lived in this single class. As the
+ * plugin grew to include table editing, legacy CSV import, diagnostics,
+ * secret rotation, correlation timelines, and usage alerts, the class was
+ * split by Single Responsibility Principle (SRP) to keep cyclomatic
+ * complexity low and files auditable.
  *
  * The actual logic lives in the per-responsibility classes:
  *   - MCWS_Admin_Menu             — admin_menu hook + asset enqueue
@@ -64,5 +65,15 @@ class MCWS_Admin
     public static function register_rest_routes(): void
     {
         MCWS_Admin_REST::register_routes();
+    }
+
+    /**
+     * Backwards-compatible proxy for fixed rates table retrieval.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public static function get_fixed_rates_table(): array
+    {
+        return MCWS_Admin_Settings::get_fixed_rates_table();
     }
 }
