@@ -19,7 +19,9 @@ class PostcodeApiHydrationTest extends TestCase
 
         foreach (array('cities', 'postal_codes') as $mcws_property_name) {
             $mcws_property = $mcws_reflection->getProperty($mcws_property_name);
-            $mcws_property->setAccessible(true);
+            if (PHP_VERSION_ID < 80100) {
+                $mcws_property->setAccessible(true);
+            }
             $mcws_property->setValue(null, array('CL' => array()));
         }
 
@@ -34,7 +36,9 @@ class PostcodeApiHydrationTest extends TestCase
         );
 
         $mcws_hydrate = $mcws_reflection->getMethod('hydrate_from_api_payload');
-        $mcws_hydrate->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $mcws_hydrate->setAccessible(true);
+        }
         $mcws_hydrate->invoke(null, $mcws_api_payload);
     }
 

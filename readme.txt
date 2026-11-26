@@ -2,9 +2,9 @@
 Contributors: cleversdev
 Tags: shipping, chile, woocommerce, checkout blocks
 Requires at least: 6.0
-Tested up to: 7.1
+Tested up to: 7.2
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,10 @@ For the Chile cities dataset endpoint, the plugin performs a read-only request a
 3. Shipping method configuration inside WooCommerce shipping zones
 
 == Changelog ==
+= 1.2.1 =
+* Compatibility: Tested up to WordPress 7.2 and PHP 8.6.
+* Tests: Guard `Reflection*::setAccessible()` calls for PHP 8.6 compatibility.
+
 = 1.2.0 =
 * Feature: Conditional free shipping threshold by region and commune with custom free shipping title.
 * Feature: Full support for WooCommerce Classic and Cart/Checkout Blocks Store API.

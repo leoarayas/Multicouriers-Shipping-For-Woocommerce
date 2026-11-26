@@ -17,7 +17,9 @@ class PostcodeResolutionTest extends TestCase
 
         $mcws_reflection = new ReflectionClass('MCWS_Chile_Address');
         $mcws_property = $mcws_reflection->getProperty('postal_codes');
-        $mcws_property->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $mcws_property->setAccessible(true);
+        }
         $mcws_property->setValue(null, array(
             'CL' => array(
                 'CL-RM' => array(
